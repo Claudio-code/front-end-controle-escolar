@@ -1,12 +1,32 @@
-import { all, takeLatest, put, call } from 'redux-saga/effects';
+import {
+  all,
+  takeLatest,
+  put,
+  call,
+} from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
+import { signInSucess, signFailure } from './actions';
 import api from '../../../services/api';
 import history from '../../../services/history';
-
+import User from '../../../domain/User';
 
 export function* signIn({ payload }) {
+  try {
+    const user = new User(payload);
+    const response = yield call(api.post, 'sessions', user);
 
+    const { token } = response.data;
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+
+    toast.success('Sign In Sucess.');
+    yield put(signInSucess(response.data));
+
+    setTimeout(() => history.push('/dashboard'), 1000);
+  } catch (error) {
+    toast.error('Esse usuario não existe.');
+    return yield put(signFailure());
+  }
 }
 
 export function setToken({ payload }) {
