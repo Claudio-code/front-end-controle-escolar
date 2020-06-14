@@ -4,7 +4,12 @@ import button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  header {
+    background: #212121;
+    color: #ffc400;
+  }
+`;
 
 export const ContainerMenus = styled.div`
   display: flex;
@@ -16,6 +21,7 @@ export const ContainerLogo = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const ToolbarContainer = styled(Toolbar)`
