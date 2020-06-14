@@ -14,33 +14,30 @@ import {
 import history from '../../services/history';
 
 export default function Header() {
-  const goStudent = () => history.push('/Alunos');
-  // const goStudent = () => history.push('/Alunos');
-
   return (
     <Container>
       <AppBar position="static">
         <ToolbarContainer>
-          <ContainerLogo>
+          <ContainerLogo onClick={() => history.push('/dashboard')}>
             <SchoolIcon />
             <Title>
               Sistema de controle escolar
             </Title>
           </ContainerLogo>
           <ContainerMenus>
-            <Button>
+            <Button onClick={() => history.push('/Alunos')}>
               Alunos
             </Button>
-            <Button>
+            <Button onClick={() => history.push('/Professores')}>
               Professores
             </Button>
-            <Button>
+            <Button onClick={() => history.push('/Disiplinas')}>
               Disiplinas
             </Button>
-            <Button>
+            <Button onClick={() => history.push('/Cursos')}>
               Cursos
             </Button>
-            <Button>
+            <Button onClick={() => history.push('/Turmas')}>
               Turmas
             </Button>
           </ContainerMenus>
