@@ -18,3 +18,11 @@ export const Title = styled(Typography).attrs({
   justify-content: center;
   font-weight: bold;
 `;
+
+export const ContainerCard = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+`;
