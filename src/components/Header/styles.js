@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Typography from '@material-ui/core/Typography';
 import button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -11,6 +10,10 @@ export const Container = styled.div`
   }
 `;
 
+export const Logo = styled.img`
+  width: 22vh;
+`;
+
 export const ContainerMenus = styled.div`
   display: flex;
   flex: 1;
@@ -20,8 +23,12 @@ export const ContainerMenus = styled.div`
 export const ContainerLogo = styled.div`
   display: flex;
   flex: 1;
-  align-items: center;
   cursor: pointer;
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const ToolbarContainer = styled(Toolbar)`
@@ -30,9 +37,10 @@ export const ToolbarContainer = styled(Toolbar)`
   justify-content: space-between;
 `;
 
-export const Title = styled(Typography).attrs({
-  variant: 'p',
-})``;
+export const Title = styled.p`
+  /* margin-left: 1vh; */
+  font-size: 1.7vh;
+`;
 
 export const Button = styled(button).attrs({
   color: 'inherit',
