@@ -7,6 +7,7 @@ export const Container = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-top: 4vh;
+  margin-bottom: 4vh;
 `;
 
 export const Title = styled(Typography).attrs({
@@ -16,7 +17,7 @@ export const Title = styled(Typography).attrs({
 `;
 
 export const Borda = styled.div`
-  width: 80vh;
+  width: 90vh;
   border-style: solid;
   border-color: #616161;
   border-width: 0px 0px 2px 0px;

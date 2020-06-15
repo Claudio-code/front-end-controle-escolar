@@ -10,6 +10,7 @@ import {
   ContainerLogo,
   LogoutIcon,
   ContainerMenus,
+  Logo
 } from './styles';
 import history from '../../services/history';
 
@@ -19,10 +20,12 @@ export default function Header() {
       <AppBar position="static">
         <ToolbarContainer>
           <ContainerLogo onClick={() => history.push('/dashboard')}>
-            <SchoolIcon />
-            <Title>
-              Sistema de controle escolar
-            </Title>
+            <div>
+              <Logo src="https://faculdadefacec.edu.br/wp-content/themes/faculdade-facec/img/logo.png" />
+              <Title>
+                Sistema de controle escolar
+              </Title>
+            </div>
           </ContainerLogo>
           <ContainerMenus>
             <Button onClick={() => history.push('/Alunos')}>
