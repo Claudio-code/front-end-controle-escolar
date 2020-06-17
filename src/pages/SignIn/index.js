@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import { Input } from './styles';
@@ -21,9 +21,9 @@ export default function SignIn() {
   const submit = (event) => {
     event.preventDefault();
     dispacth(signInRequest(email, password));
-  }
+  };
 
-  return(
+  return (
     <div>
       <form onSubmit={submit}>
         <h2>Efetuar o login</h2>
