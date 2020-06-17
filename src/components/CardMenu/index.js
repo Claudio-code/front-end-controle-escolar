@@ -8,10 +8,10 @@ import {
   ActionArea,
 } from './styles';
 
-function CardMenu({ title, content }) {
+function CardMenu({ title, content, onClick }) {
   return (
     <Container>
-      <ActionArea>
+      <ActionArea onClick={() => onClick()}>
         <CardContent>
           <Title>
             { title }
