@@ -7,6 +7,7 @@ import {
   Title,
   ContainerCard,
 } from './styles';
+import history from '../../services/history';
 
 function Alunos() {
   return (
@@ -19,6 +20,7 @@ function Alunos() {
         <CardMenu
           title="Cadastro completo"
           content="Cadastro do aluno, endereço e o responsavel."
+          onClick={() => history.push('/Alunos/FormularioCompleto')}
         />
         <CardMenu
           title="Cadastro do Aluno"
