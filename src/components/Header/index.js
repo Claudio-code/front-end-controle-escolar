@@ -1,6 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import AppBar from '@material-ui/core/AppBar';
-import SchoolIcon from '@material-ui/icons/School';
 
 import {
   Container,
@@ -10,14 +10,17 @@ import {
   ContainerLogo,
   LogoutIcon,
   ContainerMenus,
-  Logo
+  Logo,
 } from './styles';
+import { signOut } from '../../store/modules/auth/actions';
 import history from '../../services/history';
 
 export default function Header() {
+  const dispacth = useDispatch();
+
   return (
     <Container>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <ToolbarContainer>
           <ContainerLogo onClick={() => history.push('/dashboard')}>
             <div>
@@ -44,7 +47,7 @@ export default function Header() {
               Turmas
             </Button>
           </ContainerMenus>
-          <Button>
+          <Button onClick={() => dispacth(signOut())}>
             <LogoutIcon />
           </Button>
         </ToolbarContainer>

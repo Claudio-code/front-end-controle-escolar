@@ -8,6 +8,8 @@ export const Container = styled.div`
     background: #212121;
     color: #ffc400;
   }
+
+  margin-bottom: 15vh;
 `;
 
 export const Logo = styled.img`
