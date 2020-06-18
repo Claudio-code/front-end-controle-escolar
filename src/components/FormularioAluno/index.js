@@ -1,32 +1,42 @@
 import React, { useState } from 'react';
-import {
-  Paper,
-  Grid,
-} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { Grid } from '@material-ui/core';
 
 import Student from '../../domain/Student';
 import InputComponent from '../InputComponent';
-import { Container, Title, Content, ContainerHeader } from './styles';
+import SelectComponent from '../SelectComponent';
+import {
+  Container,
+  Title,
+  Content,
+  ContainerHeader,
+} from './styles';
 
 function FormularioAluno({
   title,
-  name, setName,
-  email, setEmail,
-  cnh, setCnh,
-  cpf, setCpf,
-  rg, setRg,
-  age, setAge,
-  ethnicity, setEthnicity,
-  sex, setSex,
+  name,
+  setName,
+  email,
+  setEmail,
+  cnh,
+  setCnh,
+  cpf,
+  setCpf,
+  rg,
+  setRg,
+  age,
+  setAge,
+  ethnicity,
+  setEthnicity,
+  sex,
+  setSex,
 }) {
   const [nameStatus, setNameStatus] = useState(false);
   const [emailStatus, setEmailStatus] = useState(false);
-  const [cnhStatus, setCnhStatus] = useState(false);
+  const [cnhStatus,] = useState(false);
   const [cpfStatus, setCpfStatus] = useState(false);
   const [rgStatus, setRgStatus] = useState(false);
   const [ageStatus, setAgeStatus] = useState(false);
-  const [ethnicityStatus, setEthnicityStatus] = useState(false);
-  const [sexStatus, setSexStatus] = useState(false);
 
   const handleChangeName = (event) => {
     const result = Student.validateName(event.target.value);
@@ -47,6 +57,14 @@ function FormularioAluno({
   };
 
   const handleChangeCnh = (event) => setCnh(event.target.value);
+  const handleChangeSex = (event) => setSex(event.target.value);
+  const handleChangeEthnicity = (event) => setEthnicity(event.target.value);
+
+  const handleChangeRg = (event) => {
+    const result = Student.validateRg(event.target.value);
+    setRgStatus(result);
+    setRg(event.target.value);
+  };
 
   const handleChangeAge = (event) => {
     const result = Student.validateAge(event.target.value);
@@ -64,7 +82,7 @@ function FormularioAluno({
           <Grid item xs={6}>
             <InputComponent
               id="idName"
-              label="Nome"
+              label="Nome do Estudante"
               value={name}
               type="text"
               onchangeValue={handleChangeName}
@@ -76,7 +94,7 @@ function FormularioAluno({
           <Grid item xs={6}>
             <InputComponent
               id="idEmail"
-              label="E-mail"
+              label="E-mail do Estudante"
               value={email}
               type="email"
               onchangeValue={handleChangeEmail}
@@ -88,7 +106,7 @@ function FormularioAluno({
           <Grid item xs={6}>
             <InputComponent
               id="idCpf"
-              label="Cpf"
+              label="Cpf do Estudante"
               value={cpf}
               type="number"
               onchangeValue={handleChangeCpf}
@@ -100,7 +118,7 @@ function FormularioAluno({
           <Grid item xs={6}>
             <InputComponent
               id="idCnh"
-              label="Cnh"
+              label="Cnh do Estudante"
               value={cnh}
               type="number"
               onchangeValue={handleChangeCnh}
@@ -112,7 +130,7 @@ function FormularioAluno({
           <Grid item xs={3}>
             <InputComponent
               id="idAge"
-              label="Idade"
+              label="Idade do Estudante"
               value={age}
               type="number"
               onchangeValue={handleChangeAge}
@@ -122,18 +140,91 @@ function FormularioAluno({
             />
           </Grid>
           <Grid item xs={3}>
-            <Paper >xs=3</Paper>
+            <SelectComponent
+              id="idSex"
+              value={sex}
+              onchangeValue={handleChangeSex}
+              label="Orientação sexual do Estudante"
+              options={[
+                'Masculino',
+                'Feminino',
+                'Outro',
+              ]}
+            />
           </Grid>
           <Grid item xs={3}>
-            <Paper >xs=3</Paper>
+            <InputComponent
+              id="idRg"
+              label="Rg do Estudante"
+              value={rg}
+              type="number"
+              onchangeValue={handleChangeRg}
+              errorStatus={rgStatus}
+              errorMessage="Erro insira um rg valido, apenas numeros."
+              infoMessage="Insira um rg valido, apenas numeros."
+            />
           </Grid>
           <Grid item xs={3}>
-            <Paper >xs=3</Paper>
+            <SelectComponent
+              id="idSex"
+              value={ethnicity}
+              onchangeValue={handleChangeEthnicity}
+              label="Etnia do estudante"
+              options={[
+                'Brancos',
+                'Negros',
+                'Indígenas',
+                'Pardos',
+                'Mulatos',
+                'Caboclos',
+                'Cafuzos',
+              ]}
+            />
           </Grid>
         </Grid>
       </Content>
     </Container>
   );
 }
+
+FormularioAluno.propTypes = {
+  title: PropTypes.string,
+  name: PropTypes.string,
+  setName: PropTypes.func,
+  email: PropTypes.string,
+  setEmail: PropTypes.func,
+  cnh: PropTypes.string,
+  setCnh: PropTypes.func,
+  cpf: PropTypes.string,
+  setCpf: PropTypes.func,
+  rg: PropTypes.string,
+  setRg: PropTypes.func,
+  age: PropTypes.string,
+  setAge: PropTypes.func,
+  ethnicity: PropTypes.string,
+  setEthnicity: PropTypes.func,
+  sex: PropTypes.string,
+  setSex: PropTypes.func,
+};
+
+FormularioAluno.defaultProps = {
+  title: 'Titulo do form',
+  name: '',
+  setName: () => {},
+  email: '',
+  setEmail: () => {},
+  cnh: '',
+  setCnh: () => {},
+  cpf: '',
+  setCpf: () => {},
+  rg: '',
+  setRg: () => {},
+  age: '',
+  setAge: () => {},
+  ethnicity: '',
+  setEthnicity: () => {},
+  sex: '',
+  setSex: () => {},
+};
 
 export default FormularioAluno;
