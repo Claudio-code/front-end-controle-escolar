@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CardContent from '@material-ui/core/CardContent';
 
 import {
@@ -24,5 +25,17 @@ function CardMenu({ title, content, onClick }) {
     </Container>
   );
 }
+
+CardMenu.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
+CardMenu.defaultProps = {
+  title: '',
+  content: '',
+  onClick: () => {},
+};
 
 export default CardMenu;
