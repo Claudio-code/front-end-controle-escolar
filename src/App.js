@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { store, persistor } from './store';
 import Routes from './routes';
 import history from './services/history';
-import GlobalStyle from './styles/global';
+import { GlobalStyle } from './styles/global';
 
 function App() {
   return (
