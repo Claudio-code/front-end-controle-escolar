@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
 import { Container } from './styles';
+import { HorizontalSeparator, VerticalSeparator } from '../../styles/global';
 import FormularioAluno from '../../components/FormularioAluno';
+import FormularioEndereco from '../../components/FormularioEndereco';
+import FormularioResponsavel from '../../components/FormularioResponsavel';
 
 function AlunoFormularioCompleto() {
   const [name, setName] = useState('');
@@ -16,7 +19,7 @@ function AlunoFormularioCompleto() {
   return (
     <Container>
       <FormularioAluno
-        title="Cadastro de Aluno"
+        title="Cadastro Completo de Aluno"
         name={name}
         setName={setName}
         email={email}
@@ -34,6 +37,12 @@ function AlunoFormularioCompleto() {
         sex={sex}
         setSex={setSex}
       />
+      <HorizontalSeparator />
+      <div id="ContainerRow">
+        <FormularioEndereco />
+        <VerticalSeparator />
+        <FormularioResponsavel />
+      </div>
     </Container>
   );
 }
