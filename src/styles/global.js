@@ -1,8 +1,9 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import { Button } from '@material-ui/core';
 
 export const VerticalSeparator = styled.div`
-  height: 90vh;
+  height: 40vh;
   border-style: solid;
   border-color: #ffc107;
   border-width: 0vh 0.3vh 0vh 0vh;
@@ -18,6 +19,29 @@ export const HorizontalSeparator = styled.div`
   margin: 5vh;
 `;
 
+export const ButtonGoBack = styled(Button).attrs({
+  variant: 'contained',
+})`
+  background-color: #9e9e9e !important;
+  color: #fff !important;
+  margin: 0px 02vh 0px 02vh !important;
+`;
+
+export const ButtonError = styled(Button).attrs({
+  variant: 'contained',
+})`
+  background-color: #f44336 !important;
+  color: #fff !important;
+  margin: 0px 02vh 0px 02vh !important;
+`;
+
+export const ButtonSucess = styled(Button).attrs({
+  variant: 'contained',
+})`
+  background-color: #4caf50 !important;
+  color: #fff !important;
+  margin: 0px 02vh 0px 02vh !important;
+`;
 
 export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');

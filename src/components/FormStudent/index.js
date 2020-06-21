@@ -11,7 +11,7 @@ import {
   ContainerHeader,
 } from './styles';
 
-function FormularioAluno({
+function FormStudent({
   title,
   name,
   setName,
@@ -184,7 +184,7 @@ function FormularioAluno({
   );
 }
 
-FormularioAluno.propTypes = {
+FormStudent.propTypes = {
   title: PropTypes.string,
   name: PropTypes.string,
   setName: PropTypes.func,
@@ -204,7 +204,7 @@ FormularioAluno.propTypes = {
   setSex: PropTypes.func,
 };
 
-FormularioAluno.defaultProps = {
+FormStudent.defaultProps = {
   title: 'Titulo do form',
   name: '',
   setName: () => {},
@@ -224,4 +224,4 @@ FormularioAluno.defaultProps = {
   setSex: () => {},
 };
 
-export default FormularioAluno;
+export default FormStudent;
