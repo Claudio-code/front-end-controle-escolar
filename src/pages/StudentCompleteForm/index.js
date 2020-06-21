@@ -22,6 +22,12 @@ function StudentCompleteForm() {
   const [sex, setSex] = useState('');
   const [ethnicity, setEthnicity] = useState('');
 
+  const [nameResponsible, setNameResponsible] = useState('');
+  const [emailResponsible, setEmailResponsible] = useState('');
+  const [kinshipResponsible, setKinshipResponsible] = useState('');
+  const [cpfResponsible, setCpfResponsible] = useState('');
+  const [rgResponsible, setRgResponsible] = useState('');
+
   return (
     <Container>
       <form>
@@ -46,9 +52,20 @@ function StudentCompleteForm() {
         />
         <HorizontalSeparator />
         <div id="ContainerRow">
-          <AddressForm />
+          <FormResponsible
+            cpf={cpfResponsible}
+            setCpf={setCpfResponsible}
+            email={emailResponsible}
+            setEmail={setEmailResponsible}
+            name={nameResponsible}
+            setName={setNameResponsible}
+            kinship={kinshipResponsible}
+            setKinship={setKinshipResponsible}
+            rg={rgResponsible}
+            setRg={setRgResponsible}
+          />
           <VerticalSeparator />
-          <FormResponsible />
+          <AddressForm />
         </div>
         <ButtonGoBack>
           Voltar
