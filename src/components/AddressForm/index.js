@@ -24,10 +24,10 @@ function AddressForm(props) {
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <InputComponent
-            id="idCnh"
+            id="idCnh2"
             label="Cnh do Estudante"
-            value={21}
-            type="number"
+            // value={21}
+            // type="number"
             // onchangeValue={handleChangeCnh}
             errorMessage="Erro insira um cnh valido, apenas os numeros."
             infoMessage="Insira um cnh valido, apenas os numeros."
@@ -35,10 +35,10 @@ function AddressForm(props) {
         </Grid>
         <Grid item xs={6}>
           <InputComponent
-            id="idCnh"
+            id="idCnh1"
             label="Cnh do Estudante"
-            value={21}
-            type="number"
+            // value={21}
+            // type="number"
             // onchangeValue={handleChangeCnh}
             errorMessage="Erro insira um cnh valido, apenas os numeros."
             infoMessage="Insira um cnh valido, apenas os numeros."
@@ -46,10 +46,10 @@ function AddressForm(props) {
         </Grid>
         <Grid item xs={4}>
           <InputComponent
-            id="idCnh"
+            id="idCnh4"
             label="Cnh do Estudante"
-            value={21}
-            type="number"
+            // value={21}
+            // type="number"
             // onchangeValue={handleChangeCnh}
             errorMessage="Erro insira um cnh valido, apenas os numeros."
             infoMessage="Insira um cnh valido, apenas os numeros."
@@ -57,10 +57,10 @@ function AddressForm(props) {
         </Grid>
         <Grid item xs={4}>
           <InputComponent
-            id="idCnh"
+            id="idCnh5"
             label="Cnh do Estudante"
-            value={21}
-            type="number"
+            // value={21}
+            // type="number"
             // onchangeValue={handleChangeCnh}
             errorMessage="Erro insira um cnh valido, apenas os numeros."
             infoMessage="Insira um cnh valido, apenas os numeros."
@@ -68,10 +68,10 @@ function AddressForm(props) {
         </Grid>
         <Grid item xs={4}>
           <InputComponent
-            id="idCnh"
+            id="idCnh6"
             label="Cnh do Estudante"
-            value={21}
-            type="number"
+            // value={21}
+            // type="number"
             // onchangeValue={handleChangeCnh}
             errorMessage="Erro insira um cnh valido, apenas os numeros."
             infoMessage="Insira um cnh valido, apenas os numeros."
