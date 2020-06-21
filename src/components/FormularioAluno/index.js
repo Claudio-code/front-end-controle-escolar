@@ -8,7 +8,6 @@ import SelectComponent from '../SelectComponent';
 import {
   Container,
   Title,
-  Content,
   ContainerHeader,
 } from './styles';
 
@@ -77,7 +76,6 @@ function FormularioAluno({
       <ContainerHeader>
         <Title>{ title }</Title>
       </ContainerHeader>
-      <Content>
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <InputComponent
@@ -182,7 +180,6 @@ function FormularioAluno({
             />
           </Grid>
         </Grid>
-      </Content>
     </Container>
   );
 }
