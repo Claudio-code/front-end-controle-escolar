@@ -17,13 +17,13 @@ function SelectComponent(props) {
       <FormControl fullWidth>
         <InputLabel id={id}>{ label }</InputLabel>
         <Select
-          labelId={id}
+
           id={id}
           value={value}
           onChange={onchangeValue}
         >
           {options.map((item) => (
-            <MenuItem value={item}>{ item }</MenuItem>
+            <MenuItem key={String(item)} value={item}>{ item }</MenuItem>
           ))}
         </Select>
       </FormControl>
