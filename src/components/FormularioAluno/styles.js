@@ -12,12 +12,7 @@ export const ContainerHeader = styled.div`
   display: flex;
   flex: 1;
   justify-content: center;
-`;
-
-export const Content = styled.form`
-  display: flex;
-  flex: 1;
-  margin-top: 9vh;
+  margin-bottom: 4vh;
 `;
 
 export const Title = styled(Typography).attrs({
