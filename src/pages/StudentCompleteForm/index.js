@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Container } from './styles';
+import { Container, ContainerButtons } from './styles';
 import {
   HorizontalSeparator,
   VerticalSeparator,
@@ -14,32 +14,45 @@ import FormResponsible from '../../components/FormResponsible';
 
 function StudentCompleteForm() {
   const [name, setName] = useState('');
-  const [nameStatus, setNameStatus] = useState(false);
   const [email, setEmail] = useState('');
-  const [emailStatus, setEmailStatus] = useState(false);
   const [cnh, setCnh] = useState('');
   const [cpf, setCpf] = useState('');
-  const [cpfStatus, setCpfStatus] = useState(false);
   const [rg, setRg] = useState('');
-  const [rgStatus, setRgStatus] = useState(false);
   const [age, setAge] = useState('');
-  const [ageStatus, setAgeStatus] = useState(false);
   const [sex, setSex] = useState('');
   const [ethnicity, setEthnicity] = useState('');
 
+  const [nameStatus, setNameStatus] = useState(false);
+  const [emailStatus, setEmailStatus] = useState(false);
+  const [ageStatus, setAgeStatus] = useState(false);
+  const [rgStatus, setRgStatus] = useState(false);
+  const [cpfStatus, setCpfStatus] = useState(false);
+
   const [nameResponsible, setNameResponsible] = useState('');
-  const [nameStatusResponsible, setNameStatusResponsible] = useState(false);
   const [emailResponsible, setEmailResponsible] = useState('');
-  const [emailStatusResponsible, setEmailStatusResponsible] = useState(false);
   const [kinshipResponsible, setKinshipResponsible] = useState('');
   const [cpfResponsible, setCpfResponsible] = useState('');
-  const [cpfStatusResponsible, setCpfStatusResponsible] = useState(false);
   const [rgResponsible, setRgResponsible] = useState('');
+
+  const [nameStatusResponsible, setNameStatusResponsible] = useState(false);
+  const [emailStatusResponsible, setEmailStatusResponsible] = useState(false);
+  const [cpfStatusResponsible, setCpfStatusResponsible] = useState(false);
   const [rgStatusResponsible, setRgStatusResponsible] = useState(false);
+
+  const [cepStudent, setCepStudent] = useState('');
+  const [cityStudent, setCityStudent] = useState('');
+  const [countryStudent, setCountryStudent] = useState('');
+  const [numberStudent, setNumberStudent] = useState('');
+  const [publicPlaceStudent, setPublicPlaceStudent] = useState('');
+
+  const [cepStudentStatus, setCepStudentStatus] = useState(false);
+  const [cityStudentStatus, setCityStudentStatus] = useState(false);
+  const [countryStudentStatus, setCountryStudentStatus] = useState(false);
+  const [numberStudentStatus, setNumberStudentStatus] = useState(false);
+  const [publicPlaceStudentStatus, setPublicPlaceStudentStatus] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
   };
 
   return (
@@ -97,14 +110,37 @@ function StudentCompleteForm() {
             setRgStatus={setRgStatusResponsible}
           />
           <VerticalSeparator />
-          <AddressForm />
+          <AddressForm
+            cep={cepStudent}
+            setCep={setCepStudent}
+            cepStatus={cepStudentStatus}
+            setCepStatus={setCepStudentStatus}
+            city={cityStudent}
+            setCity={setCityStudent}
+            cityStatus={cityStudentStatus}
+            setCityStatus={setCityStudentStatus}
+            number={numberStudent}
+            setNumber={setNumberStudent}
+            numberStatus={numberStudentStatus}
+            setNumberStatus={setNumberStudentStatus}
+            country={countryStudent}
+            setCountry={setCountryStudent}
+            countryStatus={countryStudentStatus}
+            setCountryStatus={setCountryStudentStatus}
+            publicPlace={publicPlaceStudent}
+            setPublicPlace={setPublicPlaceStudent}
+            publicPlaceStatus={publicPlaceStudentStatus}
+            setPublicPlaceStatus={setPublicPlaceStudentStatus}
+          />
         </div>
-        <ButtonGoBack>
-          Voltar
-        </ButtonGoBack>
-        <ButtonSucess type="submit">
-          Cadastrar
-        </ButtonSucess>
+        <ContainerButtons>
+          <ButtonGoBack>
+            Voltar
+          </ButtonGoBack>
+          <ButtonSucess type="submit">
+            Cadastrar
+          </ButtonSucess>
+        </ContainerButtons>
       </form>
     </Container>
   );
