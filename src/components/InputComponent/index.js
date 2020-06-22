@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   FormControl,
-  InputLabel,
   FormHelperText,
   Input,
 } from '@material-ui/core';
+
+import { Label } from './styles';
 
 function InputComponent(props) {
   const {
@@ -21,7 +22,7 @@ function InputComponent(props) {
 
   return (
     <FormControl fullWidth error={errorStatus}>
-      <InputLabel htmlFor="component-helper">{ label }</InputLabel>
+      <Label>{ label }</Label>
       <Input
         id={id}
         value={value}
