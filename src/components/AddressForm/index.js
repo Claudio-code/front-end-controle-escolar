@@ -1,80 +1,117 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { Container } from './styles';
 import InputComponent from '../InputComponent';
+import Andress from '../../domain/Andress';
 
-function AddressForm(props) {
-  const {
-    cep,
-    setCep,
-    city,
-    setCity,
-    country,
-    setCountry,
-    publicPlace,
-    setPublicPlace,
-    number,
-    setNumber,
-  } = props;
+function AddressForm({
+  cep,
+  setCep,
+  cepStatus,
+  setCepStatus,
+  city,
+  setCity,
+  cityStatus,
+  setCityStatus,
+  country,
+  setCountry,
+  countryStatus,
+  setCountryStatus,
+  publicPlace,
+  setPublicPlace,
+  publicPlaceStatus,
+  setPublicPlaceStatus,
+  number,
+  setNumber,
+  numberStatus,
+  setNumberStatus,
+}) {
+  const handleChangeCep = async (event) => {
+    try {
+      setCep(event.target.value);
+      const result = await Andress.validarCep(String(event.target.value));
+      setCepStatus(result.statusResponse);
+      setCity(result.city);
+      setPublicPlace(result.street);
+      setCountry(result.state);
+    } catch (error) {
+      console.log(error);
+      setCepStatus(true);
+    }
+  };
+
+  const handleChangeNumber = (event) => setNumber(event.target.value);
+
+  const handleChangeCity = (event) => {
+    setCity(event.target.value);
+  };
+
+  const handleChangeCountry = (event) => {
+    setCountry(event.target.value);
+  };
+
+  const handleChangePublicPlace = (event) => {
+    setPublicPlace(event.target.value);
+  };
 
   return (
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <InputComponent
-            id="idCnh2"
-            label="Cnh do Estudante"
-            // value={21}
-            // type="number"
-            // onchangeValue={handleChangeCnh}
-            errorMessage="Erro insira um cnh valido, apenas os numeros."
-            infoMessage="Insira um cnh valido, apenas os numeros."
+            id="idCep"
+            label="Cep do Estudante"
+            value={cep}
+            type="number"
+            errorStatus={cepStatus}
+            onchangeValue={handleChangeCep}
+            errorMessage="Erro insira um cep valido, apenas os numeros."
+            infoMessage="Insira um cep valido, apenas os numeros."
           />
         </Grid>
         <Grid item xs={6}>
           <InputComponent
-            id="idCnh1"
-            label="Cnh do Estudante"
-            // value={21}
-            // type="number"
-            // onchangeValue={handleChangeCnh}
-            errorMessage="Erro insira um cnh valido, apenas os numeros."
-            infoMessage="Insira um cnh valido, apenas os numeros."
+            id="idCity"
+            label="Cidade do Estudante"
+            value={city}
+            errorStatus={cityStatus}
+            onchangeValue={handleChangeCity}
+            errorMessage="Erro insira uma cidade valida, digite apenas letras."
+            infoMessage="Insira uma cidade valida, digite apenas letras."
           />
         </Grid>
         <Grid item xs={4}>
           <InputComponent
-            id="idCnh4"
-            label="Cnh do Estudante"
-            // value={21}
-            // type="number"
-            // onchangeValue={handleChangeCnh}
-            errorMessage="Erro insira um cnh valido, apenas os numeros."
-            infoMessage="Insira um cnh valido, apenas os numeros."
+            id="idCountry"
+            label="Estado do Estudante"
+            value={country}
+            errorStatus={countryStatus}
+            onchangeValue={handleChangeCountry}
+            errorMessage="Erro insira um estado valido, digite apenas letras."
+            infoMessage="Insira um estado valido, digite apenas letras."
           />
         </Grid>
         <Grid item xs={4}>
           <InputComponent
-            id="idCnh5"
-            label="Cnh do Estudante"
-            // value={21}
-            // type="number"
-            // onchangeValue={handleChangeCnh}
-            errorMessage="Erro insira um cnh valido, apenas os numeros."
-            infoMessage="Insira um cnh valido, apenas os numeros."
+            id="idNumber"
+            label="Numero da casa do Estudante"
+            value={number}
+            type="number"
+            onchangeValue={handleChangeNumber}
+            errorMessage="Erro insira o numero da casa."
+            infoMessage="Insira  o numero da casa."
           />
         </Grid>
         <Grid item xs={4}>
           <InputComponent
-            id="idCnh6"
-            label="Cnh do Estudante"
-            // value={21}
-            // type="number"
-            // onchangeValue={handleChangeCnh}
-            errorMessage="Erro insira um cnh valido, apenas os numeros."
-            infoMessage="Insira um cnh valido, apenas os numeros."
+            id="idPublicPlace"
+            label="Av./Rua da casa do Estudante"
+            value={publicPlace}
+            onchangeValue={handleChangePublicPlace}
+            errorMessage="Erro uma Av./rua valida."
+            infoMessage="Insira um Av./rua valida."
           />
         </Grid>
       </Grid>
