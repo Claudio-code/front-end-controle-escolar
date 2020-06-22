@@ -1,34 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { Container } from './styles';
 import InputComponent from '../InputComponent';
 import SelectComponent from '../SelectComponent';
-import Responsible from "../../domain/Responsible";
+import Responsible from '../../domain/Responsible';
 
-function FormResponsible(props) {
-  const {
-    name,
-    setName,
-    nameStatus,
-    setNameStatus,
-    email,
-    setEmail,
-    emailStatus,
-    setEmailStatus,
-    kinship,
-    setKinship,
-    cpf,
-    setCpf,
-    cpfStatus,
-    setCpfStatus,
-    rg,
-    setRg,
-    rgStatus,
-    setRgStatus,
-  } = props;
-
+function FormResponsible({
+  name,
+  setName,
+  nameStatus,
+  setNameStatus,
+  email,
+  setEmail,
+  emailStatus,
+  setEmailStatus,
+  kinship,
+  setKinship,
+  cpf,
+  setCpf,
+  cpfStatus,
+  setCpfStatus,
+  rg,
+  setRg,
+  rgStatus,
+  setRgStatus,
+}) {
   const handleChangeKinship = (event) => setKinship(event.target.value);
   const handleChangeName = (event) => {
     const result = Responsible.validateName(event.target.value);
