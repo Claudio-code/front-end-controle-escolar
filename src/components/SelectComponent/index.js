@@ -7,6 +7,8 @@ import {
   Select,
 } from '@material-ui/core';
 
+import { Label } from './styles';
+
 function SelectComponent(props) {
   const {
     id, label, value, onchangeValue, options,
@@ -15,7 +17,7 @@ function SelectComponent(props) {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel id={id}>{ label }</InputLabel>
+        <Label>{ label }</Label>
         <Select
 
           id={id}
