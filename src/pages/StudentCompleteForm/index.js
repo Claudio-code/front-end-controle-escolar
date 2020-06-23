@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
 import { Container, ContainerButtons } from './styles';
 import {
   HorizontalSeparator,
@@ -8,11 +8,16 @@ import {
   ButtonGoBack,
 } from '../../styles/global';
 
+import { completeStudentRegistration } from '../../store/modules/student/actions';
 import FormStudent from '../../components/FormStudent';
 import AddressForm from '../../components/AddressForm';
 import FormResponsible from '../../components/FormResponsible';
+import Student from '../../domain/Student';
+import Andress from '../../domain/Andress';
+import Responsible from '../../domain/Responsible';
 
 function StudentCompleteForm() {
+  const dispacth = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cnh, setCnh] = useState('');
@@ -53,6 +58,50 @@ function StudentCompleteForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const studentRes = Student.validateAllData(
+      nameStatus,
+      emailStatus,
+      ageStatus,
+      rgStatus,
+      cpfStatus,
+    );
+
+    const addressRes = Andress.validateAllData(
+      cityStudentStatus,
+      cepStudentStatus,
+      countryStudentStatus,
+      publicPlaceStudentStatus,
+      numberStudentStatus,
+    );
+
+    const responsibleRes = Responsible.validateAllData(
+      nameStatusResponsible,
+      emailStatusResponsible,
+      rgStatusResponsible,
+      cpfStatusResponsible,
+    );
+
+    if (responsibleRes && addressRes && studentRes) {
+      const student = new Student(name, email, rg, cpf, cnh, age, ethnicity, sex);
+      student.setAddress(new Andress(
+        cityStudent,
+        cepStudent,
+        countryStudent,
+        publicPlaceStudent,
+        numberStudent,
+      ));
+
+      student.setResponsible(new Responsible(
+        nameResponsible,
+        emailResponsible,
+        rgResponsible,
+        cpfResponsible,
+        kinshipResponsible,
+      ));
+
+      dispacth(completeStudentRegistration(student));
+    }
   };
 
   return (
