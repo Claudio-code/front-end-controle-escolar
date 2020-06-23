@@ -11,10 +11,13 @@ export const Container = styled.div`
 export const ContainerHeader = styled.div`
   display: flex;
   flex: 1;
-  justify-content: center;
+  /* justify-content: center; */
   margin-bottom: 4vh;
 `;
 
 export const Title = styled(Typography).attrs({
   variant: 'h5',
-})``;
+})`
+  font-weight: bold !important;
+  color: #616161 !important;
+`;
