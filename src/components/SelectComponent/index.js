@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  InputLabel,
   MenuItem,
   FormControl,
   Select,
@@ -9,11 +8,9 @@ import {
 
 import { Label } from './styles';
 
-function SelectComponent(props) {
-  const {
-    id, label, value, onchangeValue, options,
-  } = props;
-
+function SelectComponent({
+  id, label, value, onchangeValue, options,
+}) {
   return (
     <div>
       <FormControl fullWidth>
