@@ -11,15 +11,14 @@ import history from '../../../services/history';
 
 export function* studentAllRegistration({ payload }) {
   try {
-    const { student } = payload;
-    const response = yield call(api.post, 'student/registrationComplete', payload);
-    console.log(response.data);
+    yield call(api.post, 'student/registrationComplete', payload);
 
+    toast.success('Cadastro de estudante, Responsavel e Endereço feito com sucesso.');
+    return history.push('/Alunos');
   } catch (error) {
-    console.log(error);
-    return toast.error('Esse usuario não existe.');
+    console.error(error.response);
+    return toast.error(error.response.data.error);
   }
-  console.log(payload);
 }
 
 export default all([
