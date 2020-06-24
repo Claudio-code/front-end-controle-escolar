@@ -8,9 +8,6 @@ export default class Responsible extends GenericPeople {
     this.rg = rg;
     this.cpf = cpf;
     this.kinship = kinship;
-  }
-
-  static validateAllData(nameStatus, emailStatus, rgStatus, cpfStatus) {
-    return !(nameStatus && emailStatus && rgStatus && cpfStatus);
+    this.status = true;
   }
 }

@@ -22,4 +22,15 @@ export default class GenericPeople {
     const regex = /(\d{1,2})(\d{3})(\d{3})(\d{1})$/;
     return regex.test(rg);
   }
+
+  static validateAllData(attributes) {
+    for (let index = 0; index < attributes.length; index++) {
+      const element = attributes[index];
+      if (element === '') {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }

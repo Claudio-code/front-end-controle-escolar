@@ -11,6 +11,7 @@ export default class Student extends GenericPeople {
     this.age = age;
     this.ethnicity = ethnicity;
     this.sex = sex;
+    this.status = true;
   }
 
   setAddress(address) {
@@ -19,9 +20,5 @@ export default class Student extends GenericPeople {
 
   setResponsible(responsible) {
     this.Responsible = responsible;
-  }
-
-  static validateAllData(nameStatus, emailStatus, ageStatus, rgStatus, cpfStatus) {
-    return !(nameStatus && emailStatus && ageStatus && rgStatus && cpfStatus);
   }
 }

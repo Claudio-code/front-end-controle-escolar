@@ -8,10 +8,18 @@ export default class Andress {
     this.country = country;
     this.public_place = public_place;
     this.number = number;
+    this.status = true;
   }
 
-  static validateAllData(cityStatus, cepStatus, countryStatus, publicPlaceStatus, numberStatus) {
-    return !(cityStatus && cepStatus && countryStatus && publicPlaceStatus && numberStatus);
+  static validateAllData(attributes) {
+    for (let index = 0; index < attributes.length; index++) {
+      const element = attributes[index];
+      if (element === '') {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   static async validarCep(cep) {
