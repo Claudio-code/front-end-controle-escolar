@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import cepPromise from 'cep-promise';
 
-export default class Andress {
+export default class Address {
   constructor(city, cep, country, public_place, number) {
     this.city = city;
     this.cep = cep;

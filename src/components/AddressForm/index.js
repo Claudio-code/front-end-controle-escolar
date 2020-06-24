@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 
 import { Container } from './styles';
 import InputComponent from '../InputComponent';
-import Andress from '../../domain/Andress';
+import Address from '../../domain/Address';
 
 function AddressForm({
   cep,
@@ -31,7 +31,7 @@ function AddressForm({
   const handleChangeCep = async (event) => {
     try {
       setCep(event.target.value);
-      const result = await Andress.validarCep(String(event.target.value));
+      const result = await Address.validarCep(String(event.target.value));
 
       setCepStatus(result.statusResponse);
       setCity(result.city);
