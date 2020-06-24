@@ -32,6 +32,7 @@ function AddressForm({
     try {
       setCep(event.target.value);
       const result = await Andress.validarCep(String(event.target.value));
+
       setCepStatus(result.statusResponse);
       setCity(result.city);
       setPublicPlace(result.street);

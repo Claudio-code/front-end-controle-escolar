@@ -12,21 +12,19 @@ function SelectComponent({
   id, label, value, onchangeValue, options,
 }) {
   return (
-    <div>
-      <FormControl fullWidth>
-        <Label>{ label }</Label>
-        <Select
-
-          id={id}
-          value={value}
-          onChange={onchangeValue}
-        >
-          {options.map((item) => (
-            <MenuItem key={String(item)} value={item}>{ item }</MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl fullWidth>
+      <Label id={String(id)}>{ label }</Label>
+      <Select
+        id={String(id)}
+        labelId={String(id)}
+        value={value}
+        onChange={onchangeValue}
+      >
+        {options && options.map((item) => (
+          <MenuItem key={String(item)} value={item}>{ item }</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 }
 
