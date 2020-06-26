@@ -1,12 +1,11 @@
 import React from 'react';
 
+import { Title, ContainerCard } from './styles';
+import { Container } from '../../styles/global';
+
 import ContextTitle from '../../components/ContextTitle';
 import CardMenu from '../../components/CardMenu';
-import {
-  Container,
-  Title,
-  ContainerCard,
-} from './styles';
+
 import history from '../../services/history';
 
 function Alunos() {
@@ -25,10 +24,12 @@ function Alunos() {
         <CardMenu
           title="Cadastro do Aluno"
           content="Cadastro do aluno, deixando pendente o endereço e o responsavel."
+          onClick={() => history.push('/Alunos/FormularioCadastro')}
         />
         <CardMenu
           title="Cadastro do Aluno e endereço"
           content="Cadastro do aluno e o endereço deixando pendente o responsavel."
+          onClick={() => history.push('/Alunos/StudentAndAddressRegistration')}
         />
         <CardMenu
           title="Cadastro do Aluno e o seu responsavel"
