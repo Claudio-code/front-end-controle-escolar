@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { InputLabel } from '@material-ui/core';
 
-export const Label = styled(InputLabel)`
+export const Label = styled(InputLabel).attrs({
+  autoComplete: false,
+})`
   font-size: 2.2vh !important;
 `;
