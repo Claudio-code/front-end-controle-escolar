@@ -99,12 +99,10 @@ function StudentCompleteForm() {
       name, email, rg, cpf, cnh,
       age, ethnicity, sex,
     );
-
     student.setAddress(new Address(
       cityStudent, cepStudent, countryStudent,
       publicPlaceStudent, numberStudent,
     ));
-
     student.setResponsible(new Responsible(
       nameResponsible, emailResponsible, rgResponsible,
       cpfResponsible, kinshipResponsible,

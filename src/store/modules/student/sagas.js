@@ -1,9 +1,4 @@
-import {
-  all,
-  takeLatest,
-  put,
-  call,
-} from 'redux-saga/effects';
+import { all, takeLatest, call } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
 import api from '../../../services/api';
@@ -34,7 +29,20 @@ export function* studentRegistration({ payload }) {
   }
 }
 
+export function* studentAndAddressRegistration({ payload }) {
+  try {
+    yield call(api.post, 'student/studentAndAddressRegistration', payload);
+
+    toast.success('Cadastro de estudante e endereço feito com sucesso.');
+    return history.push('/Alunos');
+  } catch (error) {
+    console.error(error.response);
+    return toast.error(error.response.data.error);
+  }
+}
+
 export default all([
+  takeLatest('@student/STUDENT_REGISTRATION_AND_ADDRESS', studentAndAddressRegistration),
   takeLatest('@student/COMPLETE_STUDENT_REGISTRATION', studentAllRegistration),
   takeLatest('@student/STUDENT_REGISTRATION', studentRegistration),
 ]);

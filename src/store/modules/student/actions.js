@@ -5,9 +5,9 @@ export function completeStudentRegistrationAction(Student) {
   };
 }
 
-export function StudentRegistrationAndAnddressAction(Student) {
+export function StudentRegistrationAndAddressAction(Student) {
   return {
-    type: '@student/STUDENT_REGISTRATION_AND_ANDDRESS',
+    type: '@student/STUDENT_REGISTRATION_AND_ADDRESS',
     payload: { Student },
   };
 }

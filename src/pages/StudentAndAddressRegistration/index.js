@@ -8,6 +8,8 @@ import FormStudent from '../../components/FormStudent';
 import Student from '../../domain/Student';
 import Address from '../../domain/Address';
 
+import { StudentRegistrationAndAddressAction } from '../../store/modules/student/actions';
+
 import { SeparatorMargin } from './styles';
 import {
   Container,
@@ -46,9 +48,44 @@ function StudentAndAddressRegistration() {
   const [numberStudentStatus, setNumberStudentStatus] = useState(false);
   const [publicPlaceStudentStatus, setPublicPlaceStudentStatus] = useState(false);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const studentRes = Student.validateAllData([
+      name, email, rg, cpf, cnh, age, ethnicity, sex,
+    ]);
+    const addressRes = Address.validateAllData([
+      cityStudent, cepStudent, countryStudent,
+      publicPlaceStudent, numberStudent,
+    ]);
+
+    if (nameStatus || emailStatus || ageStatus || rgStatus || cpfStatus) {
+      return toast.error('Os dados do Formulario do aluno estão errados.');
+    }
+
+    if (cityStudentStatus || cepStudentStatus || countryStudentStatus
+      || publicPlaceStudentStatus || numberStudentStatus) {
+      return toast.error('Os dados do Formulario do endereço aluno estão errados.');
+    }
+
+    if (!studentRes || !addressRes) {
+      return toast.error('Preencha os campos corretamete.');
+    }
+
+    const student = new Student(
+      name, email, rg, cpf, cnh,
+      age, ethnicity, sex,
+    );
+    student.setAddress(new Address(
+      cityStudent, cepStudent, countryStudent,
+      publicPlaceStudent, numberStudent,
+    ));
+
+    return dispacth(StudentRegistrationAndAddressAction(student));
+  };
+
   return (
     <Container>
-      <form>
+      <form onSubmit={handleSubmit}>
         <FormStudent
           title="Cadastro Completo de Aluno"
           name={name}
