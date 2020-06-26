@@ -1,6 +1,15 @@
-import styled, { createGlobalStyle } from 'styled-components';
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import styled, { createGlobalStyle } from 'styled-components';
 import { Button } from '@material-ui/core';
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 4vh;
+  padding: 4vh;
+  border-radius: 5px;
+  background-color: #FFF;
+`;
 
 export const VerticalSeparator = styled.div`
   height: 40vh;
@@ -17,6 +26,12 @@ export const HorizontalSeparator = styled.div`
   border-width: 0vh 0vh 0.3vh 0vh;
   align-self: center;
   margin: 5vh;
+`;
+
+export const ContainerButtons = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
 `;
 
 export const ButtonGoBack = styled(Button).attrs({
