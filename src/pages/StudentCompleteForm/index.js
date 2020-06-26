@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { Container, ContainerButtons } from './styles';
+
+import FormStudent from '../../components/FormStudent';
+import AddressForm from '../../components/AddressForm';
+import FormResponsible from '../../components/FormResponsible';
+
+import Student from '../../domain/Student';
+import Address from '../../domain/Address';
+import Responsible from '../../domain/Responsible';
+
+import { ContainerRow } from './styles';
 import {
   HorizontalSeparator,
   VerticalSeparator,
   ButtonSucess,
   ButtonGoBack,
+  ContainerButtons,
+  Container,
 } from '../../styles/global';
 
-import { completeStudentRegistration } from '../../store/modules/student/actions';
-import FormStudent from '../../components/FormStudent';
-import AddressForm from '../../components/AddressForm';
-import FormResponsible from '../../components/FormResponsible';
-import Student from '../../domain/Student';
-import Address from '../../domain/Address';
-import Responsible from '../../domain/Responsible';
+import { completeStudentRegistrationAction } from '../../store/modules/student/actions';
+
 
 function StudentCompleteForm() {
   const dispacth = useDispatch();
@@ -104,7 +110,7 @@ function StudentCompleteForm() {
       cpfResponsible, kinshipResponsible,
     ));
 
-    return dispacth(completeStudentRegistration(student));
+    return dispacth(completeStudentRegistrationAction(student));
   };
 
   return (
@@ -141,7 +147,7 @@ function StudentCompleteForm() {
             setSex={setSex}
           />
           <HorizontalSeparator />
-          <div id="ContainerRow">
+          <ContainerRow>
             <FormResponsible
               cpf={cpfResponsible}
               setCpf={setCpfResponsible}
@@ -185,7 +191,7 @@ function StudentCompleteForm() {
               publicPlaceStatus={publicPlaceStudentStatus}
               setPublicPlaceStatus={setPublicPlaceStudentStatus}
             />
-          </div>
+          </ContainerRow>
           <ContainerButtons>
             <ButtonGoBack>
               Voltar
