@@ -34,6 +34,7 @@ function Alunos() {
         <CardMenu
           title="Cadastro do Aluno e o seu responsavel"
           content="Cadastro do aluno e o responsavel deixando pendente o endereço."
+          onClick={() => history.push('/Alunos/StudentAndGuardianRegistration')}
         />
       </ContainerCard>
 
