@@ -8,7 +8,7 @@ import Alunos from '../pages/Alunos';
 import StudentCompleteForm from '../pages/StudentCompleteForm';
 import StudentAndAddressRegistration from '../pages/StudentAndAddressRegistration';
 import StudentRegistration from '../pages/StudentRegistration';
-
+import StudentAndGuardianRegistration from '../pages/StudentAndGuardianRegistration';
 import Professores from '../pages/Professores';
 import Disiplinas from '../pages/Disiplinas';
 import Cursos from '../pages/Cursos';
@@ -35,6 +35,12 @@ export default function Routes() {
       <Route
         path="/Alunos/StudentAndAddressRegistration"
         component={StudentAndAddressRegistration}
+        exact
+        isPrivate
+      />
+      <Route
+        path="/Alunos/StudentAndGuardianRegistration"
+        component={StudentAndGuardianRegistration}
         exact
         isPrivate
       />
