@@ -2,6 +2,7 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
   student: null,
+  studentsList: [],
 };
 
 export default function student(state = INITIAL_STATE, action) {
