@@ -43,6 +43,7 @@ function Alunos() {
         <CardMenu
           title="Editar todos os registros"
           content="Editar todos os dados do aluno, endereço e o responsavel."
+          onClick={() => history.push('/Alunos/Update')}
         />
         <CardMenu
           title="Editar do Aluno"
