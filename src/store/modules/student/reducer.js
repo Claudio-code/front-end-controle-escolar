@@ -8,8 +8,8 @@ const INITIAL_STATE = {
 export default function student(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
-      case '': {
-        // draft.loading = true;
+      case '@student/STUDENT_SET_ALL': {
+        draft.studentsList = action.payload.studentList;
         break;
       }
       default:

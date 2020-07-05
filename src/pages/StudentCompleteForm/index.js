@@ -22,7 +22,6 @@ import {
 
 import { completeStudentRegistrationAction } from '../../store/modules/student/actions';
 
-
 function StudentCompleteForm() {
   const dispacth = useDispatch();
   const [name, setName] = useState('');

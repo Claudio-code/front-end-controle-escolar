@@ -25,3 +25,17 @@ export function StudentRegistrationAction(Student) {
     payload: { Student },
   };
 }
+
+export function getAllStudentsAction() {
+  return {
+    type: '@student/STUDENT_GET_ALL',
+    payload: {},
+  };
+}
+
+export function setAllStudentsAction(studentList) {
+  return {
+    type: '@student/STUDENT_SET_ALL',
+    payload: { studentList },
+  };
+}
