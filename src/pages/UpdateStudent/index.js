@@ -1,70 +1,82 @@
-import React, { forwardRef } from 'react';
-import MaterialTable from 'material-table';
-import {
-  Search,
-  Clear,
-  ChevronLeft,
-  ChevronRight,
-  ViewColumn,
-  FirstPage,
-  LastPage,
-  Check,
-  FilterList,
-} from '@material-ui/icons';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import { Update, Delete } from '@material-ui/icons';
 
-import { Container } from './styles';
+import ModalUpdateStudent from '../../components/ModalUpdateStudent';
+import { getAllStudentsAction } from '../../store/modules/student/actions';
+
+import { Container, ButtonUpdate, ButtonError } from '../../styles/global';
+import {
+  TableHeader, TableCellHeader, TableCellBody, Title,
+} from './styles';
 
 function UpdateStudent() {
-  const [state, setState] = React.useState({
-    columns: [
-      { title: 'Name', field: 'name' },
-      { title: 'email' },
-      { title: 'cpf' },
-      { title: 'rg' },
-      { title: 'cnh' },
-      { title: 'age' },
-      { title: 'sex' },
-      { title: 'ethnicity' },
-      { title: 'status' },
-      { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-      {
-        title: 'Birth Place',
-        field: 'birthCity',
-        lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-      },
-    ],
-    data: [
-      {
-        name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63,
-      },
-      {
-        name: 'Zerya Betül',
-        birthYear: 2017,
-        birthCity: 34,
-      },
-    ],
-  });
+  const dispatch = useDispatch();
+  const listStudent = useSelector((state) => state.student.studentsList);
+  const [modalState, setModalState] = useState(false);
+
+  useEffect(() => {
+    dispatch(getAllStudentsAction());
+  }, []);
+
+  const openModalUpdateStudent = (student) => {
+    setModalState(!modalState);
+  };
+
+  const deleteStudent = (student) => {
+    console.log(student.status.type.displayName);
+  };
 
   return (
     <Container>
-      <MaterialTable
-        title="Editar Registros do Aluno"
-        columns={state.columns}
-        icons={{
-          Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
-          Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-          DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-          Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref} />),
-          FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
-          LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
-          NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-          PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
-          ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-          Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
-          ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
-        }}
-        onRowClick={(data) => alert(data)}
-        data={state.data}
+      <Title>Lista de estudantes</Title>
+      <TableContainer component={Paper} style={{ backgroundColor: '#f5f5f5' }}>
+        <Table aria-label="customized table">
+          <TableHeader>
+            <TableRow>
+              <TableCellHeader>Nome</TableCellHeader>
+              <TableCellHeader>e-mail</TableCellHeader>
+              <TableCellHeader>cpf</TableCellHeader>
+              <TableCellHeader>rg</TableCellHeader>
+              <TableCellHeader>idade</TableCellHeader>
+              <TableCellHeader>Sexo</TableCellHeader>
+              <TableCellHeader>Etnia</TableCellHeader>
+              <TableCellHeader>Status</TableCellHeader>
+              <TableCellHeader>Opções</TableCellHeader>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {listStudent && listStudent.map((row) => (
+              <TableRow key={row.name}>
+                <TableCellBody>{row.name}</TableCellBody>
+                <TableCellBody>{row.email}</TableCellBody>
+                <TableCellBody>{row.cpf}</TableCellBody>
+                <TableCellBody>{row.rg}</TableCellBody>
+                <TableCellBody>{row.age}</TableCellBody>
+                <TableCellBody>{row.sex}</TableCellBody>
+                <TableCellBody>{row.ethnicity}</TableCellBody>
+                <TableCellBody>{row.status}</TableCellBody>
+                <TableCellBody>
+                  <ButtonUpdate onClick={() => openModalUpdateStudent(row)}>
+                    <Update />
+                  </ButtonUpdate>
+                  <ButtonError onClick={() => deleteStudent(row)}>
+                    <Delete />
+                  </ButtonError>
+                </TableCellBody>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <ModalUpdateStudent
+        modalState={modalState}
+        setModalState={setModalState}
       />
     </Container>
   );
