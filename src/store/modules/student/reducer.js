@@ -12,6 +12,10 @@ export default function student(state = INITIAL_STATE, action) {
         draft.studentsList = action.payload.studentList;
         break;
       }
+      case '@student/SET_STUDENT': {
+        draft.student = action.payload.student;
+        break;
+      }
       default:
         return state;
     }
