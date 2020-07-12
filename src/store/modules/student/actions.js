@@ -39,3 +39,17 @@ export function setAllStudentsAction(studentList) {
     payload: { studentList },
   };
 }
+
+export function getOneStudentWithAllResponsibleAndAddressAction(studentId) {
+  return {
+    type: '@student/GET_ONE_STUDENT_WITH_ALL_RESPONSIBLE_AND_ADDRESS',
+    payload: { studentId },
+  };
+}
+
+export function setOneStudentAction(student) {
+  return {
+    type: '@student/SET_STUDENT',
+    payload: { student },
+  };
+}
