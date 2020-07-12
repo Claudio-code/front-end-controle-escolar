@@ -10,7 +10,7 @@ import Student from '../../../domain/Student';
 import api from '../../../services/api';
 import history from '../../../services/history';
 
-import { setAllStudentsAction } from './actions';
+import { setAllStudentsAction, setOneStudentAction } from './actions';
 
 export function* studentAllRegistration({ payload }) {
   try {
@@ -26,8 +26,7 @@ export function* studentAllRegistration({ payload }) {
 
 export function* studentRegistration({ payload }) {
   try {
-    const { Student } = payload;
-    yield call(api.post, 'student', Student);
+    yield call(api.post, 'student', payload.Student);
 
     toast.success('Cadastro de estudante feito com sucesso.');
     return history.push('/Alunos');
@@ -92,7 +91,20 @@ export function* getAllStudents() {
   }
 }
 
+export function* getOneStudentWithAllResponsibleAndAddress({ payload }) {
+  try {
+    const { studentId } = payload;
+    const response = yield call(api.get, `find/student/${studentId}`);
+
+    yield put(setOneStudentAction(response.data));
+  } catch (error) {
+    console.error(error.response);
+    return toast.error(error.response.data.error);
+  }
+}
+
 export default all([
+  takeLatest('@student/GET_ONE_STUDENT_WITH_ALL_RESPONSIBLE_AND_ADDRESS', getOneStudentWithAllResponsibleAndAddress),
   takeLatest('@student/STUDENT_REGISTRATION_AND_RESPONSIBLE', studentAndResponsibleRegistration),
   takeLatest('@student/STUDENT_REGISTRATION_AND_ADDRESS', studentAndAddressRegistration),
   takeLatest('@student/COMPLETE_STUDENT_REGISTRATION', studentAllRegistration),
