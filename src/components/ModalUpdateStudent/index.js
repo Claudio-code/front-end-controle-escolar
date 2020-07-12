@@ -7,11 +7,13 @@ import FormStudent from '../FormStudent';
 import AddressForm from '../AddressForm';
 import FormResponsible from '../FormResponsible';
 
+import ListAddress from '../ListAddress';
 
 import { Container } from '../../styles/global';
 
 function ModalUpdateStudent({ modalState, setModalState }) {
   const dispacth = useDispatch();
+  const student = useSelector((state) => state.student.student);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cnh, setCnh] = useState('');
@@ -27,30 +29,27 @@ function ModalUpdateStudent({ modalState, setModalState }) {
   const [rgStatus, setRgStatus] = useState(false);
   const [cpfStatus, setCpfStatus] = useState(false);
 
-  const [nameResponsible, setNameResponsible] = useState('');
-  const [emailResponsible, setEmailResponsible] = useState('');
-  const [kinshipResponsible, setKinshipResponsible] = useState('');
-  const [cpfResponsible, setCpfResponsible] = useState('');
-  const [rgResponsible, setRgResponsible] = useState('');
-
-  const [nameStatusResponsible, setNameStatusResponsible] = useState(false);
-  const [emailStatusResponsible, setEmailStatusResponsible] = useState(false);
-  const [cpfStatusResponsible, setCpfStatusResponsible] = useState(false);
-  const [rgStatusResponsible, setRgStatusResponsible] = useState(false);
-
-  const [cepStudent, setCepStudent] = useState('');
-  const [cityStudent, setCityStudent] = useState('');
-  const [countryStudent, setCountryStudent] = useState('');
-  const [numberStudent, setNumberStudent] = useState('');
-  const [publicPlaceStudent, setPublicPlaceStudent] = useState('');
-
-  const [cepStudentStatus, setCepStudentStatus] = useState(false);
-  const [cityStudentStatus, setCityStudentStatus] = useState(false);
-  const [countryStudentStatus, setCountryStudentStatus] = useState(false);
-  const [numberStudentStatus, setNumberStudentStatus] = useState(false);
-  const [publicPlaceStudentStatus, setPublicPlaceStudentStatus] = useState(false);
-
   const handleClose = () => setModalState(!modalState);
+
+  useEffect(() => {
+    function setParams() {
+      if (!student) {
+        return false;
+      }
+
+      setName(student.name);
+      setEmail(student.email);
+      setCnh(student.cnh);
+      setCpf(student.cpf);
+      setRg(student.rg);
+      setAge(student.age);
+      setSex(student.sex);
+      setEthnicity(student.ethnicity);
+      console.log(student);
+    }
+
+    setParams();
+  }, [student]);
 
   return (
     <Modal
@@ -64,7 +63,7 @@ function ModalUpdateStudent({ modalState, setModalState }) {
       <Fade in={modalState}>
         <Container>
           <FormStudent
-            title="Cadastro Completo de Aluno"
+            title="Editar Aluno"
             name={name}
             setName={setName}
             nameStatus={nameStatus}
@@ -92,9 +91,13 @@ function ModalUpdateStudent({ modalState, setModalState }) {
             sex={sex}
             setSex={setSex}
           />
+          {student && student.Addresses.length !== 0 ? (
+            <ListAddress addresses={student.Addresses} />
+          ) : (
+            <div>cadastrar</div>
+          )}
         </Container>
       </Fade>
-
     </Modal>
   );
 }
