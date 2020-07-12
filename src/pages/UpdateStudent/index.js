@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import { Update, Delete } from '@material-ui/icons';
 
 import ModalUpdateStudent from '../../components/ModalUpdateStudent';
-import { getAllStudentsAction } from '../../store/modules/student/actions';
+import { getAllStudentsAction, getOneStudentWithAllResponsibleAndAddressAction } from '../../store/modules/student/actions';
 
 import { Container, ButtonUpdate, ButtonError } from '../../styles/global';
 import {
@@ -25,6 +25,7 @@ function UpdateStudent() {
   }, []);
 
   const openModalUpdateStudent = (student) => {
+    dispatch(getOneStudentWithAllResponsibleAndAddressAction(student.id));
     setModalState(!modalState);
   };
 
