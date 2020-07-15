@@ -23,7 +23,7 @@ import {
 import { completeStudentRegistrationAction } from '../../store/modules/student/actions';
 
 function StudentCompleteForm() {
-  const dispacth = useDispatch();
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cnh, setCnh] = useState('');
@@ -107,7 +107,7 @@ function StudentCompleteForm() {
       cpfResponsible, kinshipResponsible,
     ));
 
-    return dispacth(completeStudentRegistrationAction(student));
+    return dispatch(completeStudentRegistrationAction(student));
   };
 
   return (
