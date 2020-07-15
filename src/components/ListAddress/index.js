@@ -1,20 +1,37 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Update, Delete, DoneAll, HighlightOff } from '@material-ui/icons';
+import {
+  Update, Delete, DoneAll, HighlightOff,
+} from '@material-ui/icons';
+
+import ModalStudentAddress from '../ModalStudentAddress';
 
 import { ButtonUpdate, ButtonError } from '../../styles/global';
 import {
   TableHeader, TableCellHeader, TableCellBody, Title, Container,
 } from './styles';
 
-function ListAddress({ addresses }) {
+function ListAddress() {
+  const [modalState, setModalState] = useState(false);
+  const [addressData, setAddressData] = useState(null);
+  const [addressesData, setAddressesData] = useState([]);
+  const student = useSelector((state) => state.student.student);
+
+  useEffect(() => {
+    setAddressesData(student.Addresses);
+  }, [student]);
+
+  const openModalUpdateAddress = (addressRow) => {
+    setAddressData(addressRow);
+    setModalState(!modalState);
+  };
+
   return (
     <Container>
       <Title>Lista de Endereços</Title>
@@ -32,7 +49,7 @@ function ListAddress({ addresses }) {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {addresses && addresses.map((row) => (
+            {addressesData.map((row) => (
               <TableRow key={row.cep}>
                 <TableCellBody>{row.city}</TableCellBody>
                 <TableCellBody>{row.country}</TableCellBody>
@@ -41,7 +58,7 @@ function ListAddress({ addresses }) {
                 <TableCellBody>{row.cep}</TableCellBody>
                 <TableCellBody>{row.status ? (<DoneAll />) : (<HighlightOff />)}</TableCellBody>
                 <TableCellBody>
-                  <ButtonUpdate onClick={() => {}}>
+                  <ButtonUpdate onClick={() => openModalUpdateAddress(row)}>
                     <Update />
                   </ButtonUpdate>
                   <ButtonError onClick={() => {}}>
@@ -53,12 +70,13 @@ function ListAddress({ addresses }) {
           </TableBody>
         </Table>
       </TableContainer>
+      <ModalStudentAddress
+        addressData={addressData}
+        modalState={modalState}
+        setModalState={setModalState}
+      />
     </Container>
   );
 }
-
-ListAddress.propTypes = {
-  addresses: PropTypes.array.isRequired,
-};
 
 export default ListAddress;
