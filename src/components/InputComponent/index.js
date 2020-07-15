@@ -8,18 +8,16 @@ import {
 
 import { Label } from './styles';
 
-function InputComponent(props) {
-  const {
-    id,
-    label,
-    value,
-    type,
-    onchangeValue,
-    errorStatus,
-    errorMessage,
-    infoMessage,
-  } = props;
-
+function InputComponent({
+  id,
+  label,
+  value,
+  type,
+  onchangeValue,
+  errorStatus,
+  errorMessage,
+  infoMessage,
+}) {
   return (
     <FormControl fullWidth error={errorStatus}>
       <Label>{ label }</Label>

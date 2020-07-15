@@ -20,12 +20,6 @@ export const TableHeader = styled(TableHead)`
   background-color: #212121 !important;
 `;
 
-export const Container = styled.div`
-  margin: 4vh;
-  border-radius: 5px;
-  background-color: #FFF;
-`;
-
 export const Title = styled(Typography).attrs({
   variant: 'h5',
 })`
@@ -33,4 +27,8 @@ export const Title = styled(Typography).attrs({
   flex: 1;
   justify-content: flex-start;
   font-weight: bold;
+`;
+
+export const Container = styled.div`
+  margin-top: 2vh;
 `;

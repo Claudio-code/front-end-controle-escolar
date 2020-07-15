@@ -1,7 +1,7 @@
 import GenericPeople from './GenericPeople';
 
 export default class Student extends GenericPeople {
-  constructor(name, email, rg, cpf, cnh, age, ethnicity, sex) {
+  constructor(name, email, rg, cpf, cnh, age, ethnicity, sex, status = true) {
     super();
     this.name = name;
     this.email = email;
@@ -11,7 +11,11 @@ export default class Student extends GenericPeople {
     this.age = age;
     this.ethnicity = ethnicity;
     this.sex = sex;
-    this.status = true;
+    this.status = status;
+  }
+
+  setId(id) {
+    this.id = id;
   }
 
   setAddress(address) {

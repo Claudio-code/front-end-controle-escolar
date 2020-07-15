@@ -42,6 +42,14 @@ export const ButtonGoBack = styled(Button).attrs({
   margin: 0px 02vh 0px 02vh !important;
 `;
 
+export const ButtonUpdate = styled(Button).attrs({
+  variant: 'contained', color: 'primary',
+})`
+  color: #fff !important;
+  margin: 0px 02vh 0px 02vh !important;
+`;
+
+
 export const ButtonError = styled(Button).attrs({
   variant: 'contained',
 })`

@@ -2,13 +2,21 @@
 import cepPromise from 'cep-promise';
 
 export default class Address {
-  constructor(city, cep, country, public_place, number) {
+  constructor(city, cep, country, public_place, number, status = true) {
     this.city = city;
     this.cep = cep;
     this.country = country;
     this.public_place = public_place;
     this.number = number;
-    this.status = true;
+    this.status = status;
+  }
+
+  setId(id) {
+    this.id = id;
+  }
+
+  setStudentId(id) {
+    this.student_id = id;
   }
 
   static validateAllData(attributes) {
