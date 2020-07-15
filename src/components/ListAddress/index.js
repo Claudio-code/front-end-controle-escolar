@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -17,7 +17,16 @@ import {
   TableHeader, TableCellHeader, TableCellBody, Title, Container,
 } from './styles';
 
+import Address from '../../domain/Address';
+
+import {
+  updateAddress,
+  getOneStudentWithAllResponsibleAndAddressAction,
+} from '../../store/modules/student/actions';
+
+
 function ListAddress() {
+  const dispatch = useDispatch();
   const [modalState, setModalState] = useState(false);
   const [addressData, setAddressData] = useState(null);
   const [addressesData, setAddressesData] = useState([]);
@@ -30,6 +39,26 @@ function ListAddress() {
   const openModalUpdateAddress = (addressRow) => {
     setAddressData(addressRow);
     setModalState(!modalState);
+  };
+
+  const updateStateAddress = (address) => {
+    const newAddress = new Address(
+      address.city,
+      address.cep,
+      address.country,
+      address.public_place,
+      address.number,
+      !address.status,
+    );
+    newAddress.setId(address.id);
+    newAddress.setStudentId(address.student_id);
+
+    dispatch(updateAddress(newAddress));
+    dispatch(getOneStudentWithAllResponsibleAndAddressAction(
+      address.student_id,
+    ));
+
+    return newAddress;
   };
 
   return (
@@ -61,7 +90,7 @@ function ListAddress() {
                   <ButtonUpdate onClick={() => openModalUpdateAddress(row)}>
                     <Update />
                   </ButtonUpdate>
-                  <ButtonError onClick={() => {}}>
+                  <ButtonError onClick={() => updateStateAddress(row)}>
                     <Delete />
                   </ButtonError>
                 </TableCellBody>

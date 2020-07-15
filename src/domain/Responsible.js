@@ -1,14 +1,14 @@
 import GenericPeople from './GenericPeople';
 
 export default class Responsible extends GenericPeople {
-  constructor(name, email, rg, cpf, kinship) {
+  constructor(name, email, rg, cpf, kinship, status = true) {
     super();
     this.name = name;
     this.email = email;
     this.rg = rg;
     this.cpf = cpf;
     this.kinship = kinship;
-    this.status = true;
+    this.status = status;
   }
 
   setId(id) {

@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -17,7 +17,15 @@ import {
   TableHeader, TableCellHeader, TableCellBody, Title, Container,
 } from './styles';
 
+import Responsible from '../../domain/Responsible';
+
+import {
+  updateResponsible,
+  getOneStudentWithAllResponsibleAndAddressAction,
+} from '../../store/modules/student/actions';
+
 function ListResponsibles() {
+  const dispatch = useDispatch();
   const [modalState, setModalState] = useState(false);
   const [responsiblesData, setResponsiblesData] = useState([]);
   const [responsibleData, setResponsibleData] = useState([]);
@@ -32,6 +40,25 @@ function ListResponsibles() {
     setModalState(!modalState);
   };
 
+  const updateStateResponsible = (responsible) => {
+    console.log(responsible);
+
+    const newResponsible = new Responsible(
+      responsible.name,
+      responsible.email,
+      responsible.rg,
+      responsible.cpf,
+      responsible.kinship,
+      !responsible.status,
+    );
+    newResponsible.setId(responsible.id);
+    newResponsible.setStudentId(responsible.student_id);
+
+    dispatch(updateResponsible(newResponsible));
+    dispatch(getOneStudentWithAllResponsibleAndAddressAction(
+      responsible.student_id,
+    ));
+  };
 
   return (
     <Container>
@@ -62,7 +89,7 @@ function ListResponsibles() {
                   <ButtonUpdate onClick={() => openModalUpdateResponsibles(row)}>
                     <Update />
                   </ButtonUpdate>
-                  <ButtonError onClick={() => {}}>
+                  <ButtonError onClick={() => updateStateResponsible(row)}>
                     <Delete />
                   </ButtonError>
                 </TableCellBody>
