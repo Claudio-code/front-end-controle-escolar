@@ -5,10 +5,18 @@ import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Update, Delete } from '@material-ui/icons';
+import {
+  Update, Delete, DoneAll, HighlightOff,
+} from '@material-ui/icons';
+
+import Student from '../../domain/Student';
 
 import ModalUpdateStudent from '../../components/ModalUpdateStudent';
-import { getAllStudentsAction, getOneStudentWithAllResponsibleAndAddressAction } from '../../store/modules/student/actions';
+import {
+  getAllStudentsAction,
+  getOneStudentWithAllResponsibleAndAddressAction,
+  updateStudent,
+} from '../../store/modules/student/actions';
 
 import { Container, ButtonUpdate, ButtonError } from '../../styles/global';
 import {
@@ -18,11 +26,16 @@ import {
 function UpdateStudent() {
   const dispatch = useDispatch();
   const listStudent = useSelector((state) => state.student.studentsList);
+  const [listStudentData, setListStudentData] = useState([]);
   const [modalState, setModalState] = useState(false);
 
   useEffect(() => {
     dispatch(getAllStudentsAction());
   }, []);
+
+  useEffect(() => {
+    setListStudentData(listStudent);
+  }, [listStudent]);
 
   const openModalUpdateStudent = (student) => {
     dispatch(getOneStudentWithAllResponsibleAndAddressAction(student.id));
@@ -30,7 +43,21 @@ function UpdateStudent() {
   };
 
   const deleteStudent = (student) => {
-    console.log(student.status.type.displayName);
+    const Newstudent = new Student(
+      student.name,
+      student.email,
+      student.rg,
+      student.cpf,
+      student.cnh,
+      student.age,
+      student.ethnicity,
+      student.sex,
+      !student.status,
+    );
+
+    Newstudent.setId(student.id);
+    dispatch(updateStudent(Newstudent));
+    dispatch(getAllStudentsAction());
   };
 
   return (
@@ -52,7 +79,7 @@ function UpdateStudent() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {listStudent && listStudent.map((row) => (
+            {listStudentData.map((row) => (
               <TableRow key={row.name}>
                 <TableCellBody>{row.name}</TableCellBody>
                 <TableCellBody>{row.email}</TableCellBody>
@@ -61,7 +88,7 @@ function UpdateStudent() {
                 <TableCellBody>{row.age}</TableCellBody>
                 <TableCellBody>{row.sex}</TableCellBody>
                 <TableCellBody>{row.ethnicity}</TableCellBody>
-                <TableCellBody>{row.status}</TableCellBody>
+                <TableCellBody>{row.status ? (<DoneAll />) : (<HighlightOff />)}</TableCellBody>
                 <TableCellBody>
                   <ButtonUpdate onClick={() => openModalUpdateStudent(row)}>
                     <Update />

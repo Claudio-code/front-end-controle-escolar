@@ -1,6 +1,5 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import { DoneAll, HighlightOff } from '@material-ui/icons';
 import {
   all, takeLatest, call, put,
 } from 'redux-saga/effects';
@@ -78,7 +77,7 @@ export function* getAllStudents() {
         item.age,
         item.ethnicity,
         item.sex,
-        item.status ? <DoneAll /> : <HighlightOff />,
+        item.status,
       );
       student.setId(item.id);
       list.push(student);
@@ -103,6 +102,65 @@ export function* getOneStudentWithAllResponsibleAndAddress({ payload }) {
   }
 }
 
+export function* updateStudent({ payload }) {
+  try {
+    const { student } = payload;
+    yield call(api.put, 'student', student);
+
+    return toast.success('Edição do estudante feita com sucesso.');
+  } catch (error) {
+    console.error(error.response);
+    return toast.error(error.response.data.error);
+  }
+}
+
+export function* updateAddress({ payload }) {
+  try {
+    const { address } = payload;
+    yield call(api.put, 'andress', address);
+
+    return toast.success('Edição do Endereço feita com sucesso.');
+  } catch (error) {
+    console.error(error.response);
+    return toast.error(error.response.data.error);
+  }
+}
+
+export function* createAddress({ payload }) {
+  try {
+    const { address } = payload;
+    yield call(api.post, 'andress', address);
+
+    return toast.success('Criado Endereço do estudante.');
+  } catch (error) {
+    console.error(error.response);
+    return toast.error(error.response.data.error);
+  }
+}
+
+export function* updateResponsible({ payload }) {
+  try {
+    const { responsible } = payload;
+    yield call(api.put, 'responsible', responsible);
+
+    return toast.success('Edição do Responsavel feita com sucesso.');
+  } catch (error) {
+    console.error(error.response);
+    return toast.error(error.response.data.error);
+  }
+}
+export function* createResponsible({ payload }) {
+  try {
+    const { responsible } = payload;
+    yield call(api.post, 'responsible', responsible);
+
+    return toast.success('Cadastrado Responsavel do estudante.');
+  } catch (error) {
+    console.error(error.response);
+    return toast.error(error.response.data.error);
+  }
+}
+
 export default all([
   takeLatest('@student/GET_ONE_STUDENT_WITH_ALL_RESPONSIBLE_AND_ADDRESS', getOneStudentWithAllResponsibleAndAddress),
   takeLatest('@student/STUDENT_REGISTRATION_AND_RESPONSIBLE', studentAndResponsibleRegistration),
@@ -110,4 +168,9 @@ export default all([
   takeLatest('@student/COMPLETE_STUDENT_REGISTRATION', studentAllRegistration),
   takeLatest('@student/STUDENT_REGISTRATION', studentRegistration),
   takeLatest('@student/STUDENT_GET_ALL', getAllStudents),
+  takeLatest('@student/UPDATE_STUDENT', updateStudent),
+  takeLatest('@student/UPDATE_ADDRESS', updateAddress),
+  takeLatest('@student/CREATE_ADDRESS', createAddress),
+  takeLatest('@student/UPDATE_RESPONSIBLE', updateResponsible),
+  takeLatest('@student/CREATE_RESPONSIBLE', createResponsible),
 ]);

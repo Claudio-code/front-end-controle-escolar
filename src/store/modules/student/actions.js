@@ -53,3 +53,39 @@ export function setOneStudentAction(student) {
     payload: { student },
   };
 }
+
+export function updateStudent(student) {
+  return {
+    type: '@student/UPDATE_STUDENT',
+    payload: { student },
+  };
+}
+
+export function updateAddress(address) {
+  return {
+    type: '@student/UPDATE_ADDRESS',
+    payload: { address },
+  };
+}
+
+export function createAddress(address) {
+  return {
+    type: '@student/CREATE_ADDRESS',
+    payload: { address },
+  };
+}
+
+export function updateResponsible(responsible) {
+  return {
+    type: '@student/UPDATE_RESPONSIBLE',
+    payload: { responsible },
+  };
+}
+
+export function createResponsible(responsible) {
+  return {
+    type: '@student/CREATE_RESPONSIBLE',
+    payload: { responsible },
+  };
+}
+
