@@ -10,4 +10,12 @@ export default class Responsible extends GenericPeople {
     this.kinship = kinship;
     this.status = true;
   }
+
+  setId(id) {
+    this.id = id;
+  }
+
+  setStudentId(id) {
+    this.student_id = id;
+  }
 }

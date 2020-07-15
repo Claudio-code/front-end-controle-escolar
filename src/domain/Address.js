@@ -11,6 +11,14 @@ export default class Address {
     this.status = true;
   }
 
+  setId(id) {
+    this.id = id;
+  }
+
+  setStudentId(id) {
+    this.student_id = id;
+  }
+
   static validateAllData(attributes) {
     for (let index = 0; index < attributes.length; index++) {
       const element = attributes[index];
