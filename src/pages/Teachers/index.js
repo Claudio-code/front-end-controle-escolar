@@ -14,8 +14,13 @@ function Teachers() {
         Opções do Professor
       </Title>
       <ContextTitle title="Cadastro" />
-      {/* <ContainerCard>
-      </ContainerCard> */}
+      <ContainerCard>
+        <CardMenu
+          title="Cadastro Professor"
+          content="Cadastro apenas do professor."
+          onClick={() => history.push('/Professores/Cadastros')}
+        />
+      </ContainerCard>
     </Container>
   );
 }

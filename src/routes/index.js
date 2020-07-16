@@ -11,6 +11,7 @@ import StudentRegistration from '../pages/StudentRegistration';
 import UpdateStudent from '../pages/UpdateStudent';
 import StudentAndGuardianRegistration from '../pages/StudentAndGuardianRegistration';
 import Teachers from '../pages/Teachers';
+import TeacherRegistration from '../pages/TeacherRegistration';
 import Disciplines from '../pages/Disciplines';
 import Cursos from '../pages/Cursos';
 import Turmas from '../pages/Turmas';
@@ -51,7 +52,18 @@ export default function Routes() {
         exact
         isPrivate
       />
-      <Route path="/Professores" component={Teachers} isPrivate />
+      <Route
+        path="/Professores"
+        component={Teachers}
+        exact
+        isPrivate
+      />
+      <Route
+        path="/Professores/Cadastros"
+        component={TeacherRegistration}
+        exact
+        isPrivate
+      />
       <Route path="/Disiplinas" component={Disciplines} isPrivate />
       <Route path="/Cursos" component={Cursos} isPrivate />
       <Route path="/Turmas" component={Turmas} isPrivate />
