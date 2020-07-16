@@ -17,7 +17,7 @@ export const Title = styled(Typography).attrs({
 `;
 
 export const Borda = styled.div`
-  width: 90vh;
+  width: 70vh;
   border-style: solid;
   border-color: #616161;
   border-width: 0px 0px 2px 0px;

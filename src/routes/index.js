@@ -10,8 +10,8 @@ import StudentAndAddressRegistration from '../pages/StudentAndAddressRegistratio
 import StudentRegistration from '../pages/StudentRegistration';
 import UpdateStudent from '../pages/UpdateStudent';
 import StudentAndGuardianRegistration from '../pages/StudentAndGuardianRegistration';
-import Professores from '../pages/Professores';
-import Disiplinas from '../pages/Disiplinas';
+import Teachers from '../pages/Teachers';
+import Disciplines from '../pages/Disciplines';
 import Cursos from '../pages/Cursos';
 import Turmas from '../pages/Turmas';
 
@@ -51,8 +51,8 @@ export default function Routes() {
         exact
         isPrivate
       />
-      <Route path="/Professores" component={Professores} isPrivate />
-      <Route path="/Disiplinas" component={Disiplinas} isPrivate />
+      <Route path="/Professores" component={Teachers} isPrivate />
+      <Route path="/Disiplinas" component={Disciplines} isPrivate />
       <Route path="/Cursos" component={Cursos} isPrivate />
       <Route path="/Turmas" component={Turmas} isPrivate />
     </Switch>
