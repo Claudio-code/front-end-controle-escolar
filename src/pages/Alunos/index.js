@@ -44,18 +44,6 @@ function Alunos() {
           content="Editar todos os dados do aluno, endereço e o responsavel."
           onClick={() => history.push('/Alunos/Update')}
         />
-        <CardMenu
-          title="Editar do Aluno"
-          content="Editar todos os dados aluno, deixando imutavel o endereço e o responsavel."
-        />
-        <CardMenu
-          title="Editar do Aluno e endereço"
-          content="Editar todos os dados aluno e o endereço deixando imutavel o responsavel."
-        />
-        <CardMenu
-          title="Editar do Aluno e o seu responsavel"
-          content="Editar todos os dados aluno e o responsavel deixando imutavel o endereço."
-        />
       </ContainerCard>
 
       <ContextTitle title="Outros" />
