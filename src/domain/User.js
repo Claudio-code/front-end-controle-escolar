@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 
 export default class User {
   constructor({ email, password }) {
-    this.email = this.validateEmail(email);
+    this.username = this.validateEmail(email);
     this.password = this.validatePassword(password);
   }
 

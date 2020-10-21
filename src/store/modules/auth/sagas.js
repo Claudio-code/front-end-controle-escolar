@@ -14,23 +14,27 @@ import User from '../../../domain/User';
 export function* signIn({ payload }) {
   try {
     const user = new User(payload);
-    const response = yield call(api.post, 'sessions', user);
+    const response = yield call(api.post, 'login_check', user);
 
     const { token } = response.data;
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     toast.success('Sign In Sucess.');
-    yield put(signInSucess(response.data));
+    yield put(signInSucess({
+      token,
+      ...user,
+    }));
 
     setTimeout(() => history.push('/dashboard'), 1000);
   } catch (error) {
+    console.log(error);
     toast.error('Esse usuario não existe.');
     return yield put(signFailure());
   }
 }
 
 export function setToken({ payload }) {
-  if (!payload) return;
+  if (!payload || !payload.auth || !payload.auth.token) return;
 
   const { token } = payload.auth.token;
 
