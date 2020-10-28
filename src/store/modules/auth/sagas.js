@@ -14,7 +14,7 @@ import User from '../../../domain/User';
 export function* signIn({ payload }) {
   try {
     const user = new User(payload);
-    const response = yield call(api.post, 'login_check', user);
+    const response = yield call(api.post, '/login_check', user);
 
     const { token } = response.data;
     api.defaults.headers.Authorization = `Bearer ${token}`;
