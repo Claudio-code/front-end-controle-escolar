@@ -6,7 +6,7 @@ export default class Address {
     this.city = city;
     this.cep = cep;
     this.country = country;
-    this.public_place = public_place;
+    this.publicPlace = public_place;
     this.number = number;
     this.status = status;
   }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { toast } from 'react-toastify';
 import {
   all, takeLatest, call, put,
@@ -13,7 +12,7 @@ import { setAllStudentsAction, setOneStudentAction } from './actions';
 
 export function* studentAllRegistration({ payload }) {
   try {
-    yield call(api.post, 'student/registration', payload);
+    yield call(api.post, 'api/student/', payload);
 
     toast.success('Cadastro de estudante, Responsavel e Endereço feito com sucesso.');
     return history.push('/Alunos');
@@ -25,7 +24,7 @@ export function* studentAllRegistration({ payload }) {
 
 export function* studentRegistration({ payload }) {
   try {
-    yield call(api.post, 'student', payload.Student);
+    yield call(api.post, 'api/student/', payload);
 
     toast.success('Cadastro de estudante feito com sucesso.');
     return history.push('/Alunos');
@@ -37,7 +36,7 @@ export function* studentRegistration({ payload }) {
 
 export function* studentAndAddressRegistration({ payload }) {
   try {
-    yield call(api.post, 'student/registration', payload);
+    yield call(api.post, 'api/student/', payload);
 
     toast.success('Cadastro de estudante e endereço feito com sucesso.');
     return history.push('/Alunos');
@@ -49,7 +48,7 @@ export function* studentAndAddressRegistration({ payload }) {
 
 export function* studentAndResponsibleRegistration({ payload }) {
   try {
-    yield call(api.post, 'student/registration', payload);
+    yield call(api.post, 'api/student/', payload);
 
     toast.success('Cadastro de estudante e responsavel feito com sucesso.');
     return history.push('/Alunos');
@@ -61,11 +60,11 @@ export function* studentAndResponsibleRegistration({ payload }) {
 
 export function* getAllStudents() {
   try {
-    const response = yield call(api.get, 'student');
+    const response = yield call(api.get, 'api/student/');
 
     const listStudent = response.data;
     const list = [];
-    for (let i = 0; i < listStudent.length; i++) {
+    for (let i = 0; i < listStudent.length; i += 1) {
       const item = listStudent[i];
 
       const student = new Student(
@@ -86,78 +85,72 @@ export function* getAllStudents() {
     yield put(setAllStudentsAction(list));
   } catch (error) {
     console.error(error.response);
-    return toast.error(error.response.data.error);
+    toast.error(error.response.data.error);
   }
 }
 
-export function* getOneStudentWithAllResponsibleAndAddress({ payload }) {
+export function* getOneStudentWithAllResponsibleAndAddress({ payload: { studentId } }) {
   try {
-    const { studentId } = payload;
-    const response = yield call(api.get, `find/student/${studentId}`);
+    const response = yield call(api.get, `api/student/${studentId}`);
 
     yield put(setOneStudentAction(response.data));
   } catch (error) {
     console.error(error.response);
-    return toast.error(error.response.data.error);
+    toast.error(error.response.data.error);
   }
 }
 
-export function* updateStudent({ payload }) {
+export function* updateStudent({ payload: { student } }) {
   try {
-    const { student } = payload;
-    yield call(api.put, 'student', student);
+    yield call(api.put, 'api/student/', student);
 
-    return toast.success('Edição do estudante feita com sucesso.');
+    toast.success('Edição do estudante feita com sucesso.');
   } catch (error) {
     console.error(error.response);
-    return toast.error(error.response.data.error);
+    toast.error(error.response.data.error);
   }
 }
 
-export function* updateAddress({ payload }) {
+export function* updateAddress({ payload: { address } }) {
   try {
-    const { address } = payload;
-    yield call(api.put, 'andress', address);
+    yield call(api.put, `api/address/${address.id}`, address);
 
-    return toast.success('Edição do Endereço feita com sucesso.');
+    toast.success('Edição do Endereço feita com sucesso.');
   } catch (error) {
     console.error(error.response);
-    return toast.error(error.response.data.error);
+    toast.error(error.response.data.error);
   }
 }
 
-export function* createAddress({ payload }) {
+export function* createAddress({ payload: { address } }) {
   try {
-    const { address } = payload;
-    yield call(api.post, 'andress', address);
+    yield call(api.post, 'api/address/', address);
 
-    return toast.success('Criado Endereço do estudante.');
+    toast.success('Criado Endereço do estudante.');
   } catch (error) {
     console.error(error.response);
-    return toast.error(error.response.data.error);
+    toast.error(error.response.data.error);
   }
 }
 
-export function* updateResponsible({ payload }) {
+export function* updateResponsible({ payload: { responsible } }) {
   try {
-    const { responsible } = payload;
-    yield call(api.put, 'responsible', responsible);
+    yield call(api.put, `api/responsible/${responsible.id}`, responsible);
 
-    return toast.success('Edição do Responsavel feita com sucesso.');
+    toast.success('Edição do Responsavel feita com sucesso.');
   } catch (error) {
     console.error(error.response);
-    return toast.error(error.response.data.error);
+    toast.error(error.response.data.error);
   }
 }
-export function* createResponsible({ payload }) {
+export function* createResponsible({ payload: { responsible } }) {
   try {
-    const { responsible } = payload;
-    yield call(api.post, 'responsible', responsible);
+    yield call(api.post, 'api/responsible/', responsible);
 
-    return toast.success('Cadastrado Responsavel do estudante.');
+    toast.success('Cadastrado Responsavel do estudante.');
   } catch (error) {
     console.error(error.response);
-    return toast.error(error.response.data.error);
+    toast.error(error.response.data.error);
   }
 }
 

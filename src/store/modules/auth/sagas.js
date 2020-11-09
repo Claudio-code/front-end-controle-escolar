@@ -29,7 +29,7 @@ export function* signIn({ payload }) {
   } catch (error) {
     console.log(error);
     toast.error('Esse usuario não existe.');
-    return yield put(signFailure());
+    yield put(signFailure());
   }
 }
 
@@ -37,15 +37,12 @@ export function setToken({ payload }) {
   if (!payload || !payload.auth || !payload.auth.token) return;
 
   const { token } = payload.auth.token;
-
   if (token) {
     api.defaults.headers.common = { Authorization: `bearer ${token}` };
   }
 }
 
-export function signOut() {
-  return history.push('/');
-}
+export const signOut = () => history.push('/');
 
 export default all([
   takeLatest('persist/REHYDRATE', setToken),

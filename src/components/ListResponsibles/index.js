@@ -41,8 +41,6 @@ function ListResponsibles() {
   };
 
   const updateStateResponsible = (responsible) => {
-    console.log(responsible);
-
     const newResponsible = new Responsible(
       responsible.name,
       responsible.email,
@@ -77,7 +75,7 @@ function ListResponsibles() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {responsiblesData.map((row) => (
+            {responsiblesData.length > 0 && responsiblesData.map((row) => (
               <TableRow key={row.id}>
                 <TableCellBody>{row.name}</TableCellBody>
                 <TableCellBody>{row.email}</TableCellBody>

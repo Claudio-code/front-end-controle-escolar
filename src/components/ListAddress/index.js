@@ -78,7 +78,7 @@ function ListAddress() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {addressesData.map((row) => (
+            {addressesData.length > 0 && addressesData.map((row) => (
               <TableRow key={row.cep}>
                 <TableCellBody>{row.city}</TableCellBody>
                 <TableCellBody>{row.country}</TableCellBody>

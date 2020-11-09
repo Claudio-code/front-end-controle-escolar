@@ -47,7 +47,7 @@ function ModalUpdateStudent({ modalState, setModalState }) {
   useEffect(() => {
     function setParams() {
       if (!student) {
-        return false;
+        return;
       }
 
       setName(student.name);
@@ -136,7 +136,7 @@ function ModalUpdateStudent({ modalState, setModalState }) {
               </ButtonSucess>
             </ContainerButtons>
           </form>
-          {student && student.Addresses.length !== 0 ? (
+          {student && student.Addresses && student.Addresses.length >= 0 ? (
             <ListAddress />
           ) : (
             <ContainerRegister>
@@ -146,7 +146,7 @@ function ModalUpdateStudent({ modalState, setModalState }) {
             </ContainerRegister>
           )}
 
-          {student && student.Responsibles.length !== 0 ? (
+          {student && student.Responsibles.length > 0 ? (
             <ListResponsibles />
           ) : (
             <ContainerRegister>
@@ -155,7 +155,6 @@ function ModalUpdateStudent({ modalState, setModalState }) {
               </ButtonUpdate>
             </ContainerRegister>
           )}
-
           <ModalUpdateResponsible
             modalState={modalResponsibleState}
             setModalState={setModalResponsibleState}
