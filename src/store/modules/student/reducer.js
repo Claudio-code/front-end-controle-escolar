@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-param-reassign */
 import produce from 'immer';
 
 const INITIAL_STATE = {
@@ -20,5 +22,4 @@ export default function student(state = INITIAL_STATE, action) {
         return state;
     }
   });
-
 }

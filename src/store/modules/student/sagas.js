@@ -17,7 +17,6 @@ export function* studentAllRegistration({ payload }) {
     toast.success('Cadastro de estudante, Responsavel e Endereço feito com sucesso.');
     return history.push('/Alunos');
   } catch (error) {
-    console.error(error.response);
     return toast.error(error.response.data.error);
   }
 }
@@ -29,7 +28,6 @@ export function* studentRegistration({ payload }) {
     toast.success('Cadastro de estudante feito com sucesso.');
     return history.push('/Alunos');
   } catch (error) {
-    console.error(error.response);
     return toast.error(error.response.data.error);
   }
 }
@@ -41,7 +39,6 @@ export function* studentAndAddressRegistration({ payload }) {
     toast.success('Cadastro de estudante e endereço feito com sucesso.');
     return history.push('/Alunos');
   } catch (error) {
-    console.error(error.response);
     return toast.error(error.response.data.error);
   }
 }
@@ -53,7 +50,6 @@ export function* studentAndResponsibleRegistration({ payload }) {
     toast.success('Cadastro de estudante e responsavel feito com sucesso.');
     return history.push('/Alunos');
   } catch (error) {
-    console.error(error.response);
     return toast.error(error.response.data.error);
   }
 }
@@ -84,7 +80,6 @@ export function* getAllStudents() {
 
     yield put(setAllStudentsAction(list));
   } catch (error) {
-    console.error(error.response);
     toast.error(error.response.data.error);
   }
 }
@@ -95,7 +90,6 @@ export function* getOneStudentWithAllResponsibleAndAddress({ payload: { studentI
 
     yield put(setOneStudentAction(response.data));
   } catch (error) {
-    console.error(error.response);
     toast.error(error.response.data.error);
   }
 }
@@ -106,7 +100,6 @@ export function* updateStudent({ payload: { student } }) {
 
     toast.success('Edição do estudante feita com sucesso.');
   } catch (error) {
-    console.error(error.response);
     toast.error(error.response.data.error);
   }
 }
@@ -117,7 +110,6 @@ export function* updateAddress({ payload: { address } }) {
 
     toast.success('Edição do Endereço feita com sucesso.');
   } catch (error) {
-    console.error(error.response);
     toast.error(error.response.data.error);
   }
 }
@@ -128,7 +120,6 @@ export function* createAddress({ payload: { address } }) {
 
     toast.success('Criado Endereço do estudante.');
   } catch (error) {
-    console.error(error.response);
     toast.error(error.response.data.error);
   }
 }
@@ -139,7 +130,6 @@ export function* updateResponsible({ payload: { responsible } }) {
 
     toast.success('Edição do Responsavel feita com sucesso.');
   } catch (error) {
-    console.error(error.response);
     toast.error(error.response.data.error);
   }
 }
@@ -149,7 +139,6 @@ export function* createResponsible({ payload: { responsible } }) {
 
     toast.success('Cadastrado Responsavel do estudante.');
   } catch (error) {
-    console.error(error.response);
     toast.error(error.response.data.error);
   }
 }

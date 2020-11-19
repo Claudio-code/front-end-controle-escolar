@@ -13,15 +13,15 @@ function SelectComponent({
 }) {
   return (
     <FormControl fullWidth>
-      <Label id={String(id)}>{ label }</Label>
+      <Label id={label}>{ label }</Label>
       <Select
-        id={String(id)}
+        id={`${label}-${id}`}
         labelId={String(id)}
         value={value}
         onChange={onchangeValue}
       >
         {options && options.map((item) => (
-          <MenuItem key={String(item)} value={item}>{ item }</MenuItem>
+          <MenuItem key={`${label}-${id}`} value={item}>{ item }</MenuItem>
         ))}
       </Select>
     </FormControl>

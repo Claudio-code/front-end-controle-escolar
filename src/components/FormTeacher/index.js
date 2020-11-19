@@ -16,7 +16,7 @@ function FormTeacher({
   name,
   setName,
   email,
-  setEmail
+  setEmail,
 }) {
   return (
     <Container>

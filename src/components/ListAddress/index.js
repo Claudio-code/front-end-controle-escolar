@@ -24,7 +24,6 @@ import {
   getOneStudentWithAllResponsibleAndAddressAction,
 } from '../../store/modules/student/actions';
 
-
 function ListAddress() {
   const dispatch = useDispatch();
   const [modalState, setModalState] = useState(false);

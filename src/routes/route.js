@@ -30,7 +30,6 @@ export default function RouteWrapper({
       )}
     />
   );
-
 }
 
 RouteWrapper.prototype = {

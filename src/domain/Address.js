@@ -20,7 +20,7 @@ export default class Address {
   }
 
   static validateAllData(attributes) {
-    for (let index = 0; index < attributes.length; index++) {
+    for (let index = 0; index < attributes.length; index += 1) {
       const element = attributes[index];
       if (element === '') {
         return false;

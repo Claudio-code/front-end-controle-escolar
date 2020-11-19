@@ -6,7 +6,6 @@ import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 import persistReducer from './persistReducer';
 
-
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
