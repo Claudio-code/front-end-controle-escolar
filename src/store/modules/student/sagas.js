@@ -4,7 +4,6 @@ import {
 } from 'redux-saga/effects';
 
 import Student from '../../../domain/Student';
-
 import api from '../../../services/api';
 import history from '../../../services/history';
 

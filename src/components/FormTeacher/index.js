@@ -32,16 +32,12 @@ const FormTeacher = ({
   setRgStatus,
   cnh,
   setCnh,
-  cnhStatus,
-  setCnhStatus,
   age,
   setAge,
   ageStatus,
   setAgeStatus,
   academicTitle,
   setAcademicTitle,
-  academicTitleStatus,
-  setAcademicTitleStatus,
 }) => {
   const handleChangeName = (event) => {
     const result = Teacher.validateName(event.target.value);
@@ -66,6 +62,16 @@ const FormTeacher = ({
     setRgStatus(result);
     setRg(event.target.value);
   };
+
+  const handleChangeCnh = (event) => setCnh(event.target.value);
+
+  const handleChangeAge = (event) => {
+    const result = Teacher.validateAge(event.target.value);
+    setAgeStatus(result);
+    setAge(event.target.value);
+  };
+
+  const handleAcademicTitle = (event) => setAcademicTitle(event.target.value);
 
   return (
     <Container>
@@ -122,20 +128,48 @@ const FormTeacher = ({
           />
         </Grid>
         <Grid item xs={4}>
-          cnh
+          <InputComponent
+            id="idCnh"
+            label="Cnh do Estudante"
+            value={cnh}
+            type="number"
+            onchangeValue={handleChangeCnh}
+            errorMessage="Erro insira um cnh valido, apenas os numeros."
+            infoMessage="Insira um cnh valido, apenas os numeros."
+          />
         </Grid>
         <Grid item xs={6}>
-          age
+          <InputComponent
+            id="idAge"
+            label="Idade do Estudante"
+            value={age}
+            type="number"
+            onchangeValue={handleChangeAge}
+            errorStatus={ageStatus}
+            errorMessage="Erro insira um idade valido, apenas numeros."
+            infoMessage="Insira um idade valido, apenas numeros."
+          />
         </Grid>
         <Grid item xs={6}>
-          academia
+          <SelectComponent
+            id="idAcademicTitle"
+            label="Titulo Academico"
+            type="text"
+            value={academicTitle}
+            onchangeValue={handleAcademicTitle}
+            options={[
+              'Mestre',
+              'Especialista',
+              'Doutor',
+            ]}
+          />
         </Grid>
       </Grid>
     </Container>
   );
 };
 
-FormTeacher.prototypes = {
+FormTeacher.propTypes = {
   title: PropTypes.string,
   name: PropTypes.string,
   setName: PropTypes.func,
@@ -155,16 +189,12 @@ FormTeacher.prototypes = {
   setRgStatus: PropTypes.func,
   cnh: PropTypes.string,
   setCnh: PropTypes.func,
-  cnhStatus: PropTypes.bool,
-  setCnhStatus: PropTypes.func,
   age: PropTypes.string,
   setAge: PropTypes.func,
   ageStatus: PropTypes.bool,
   setAgeStatus: PropTypes.func,
   academicTitle: PropTypes.string,
   setAcademicTitle: PropTypes.func,
-  academicTitleStatus: PropTypes.bool,
-  setAcademicTitleStatus: PropTypes.func,
 };
 
 FormTeacher.defaultProps = {
@@ -187,16 +217,12 @@ FormTeacher.defaultProps = {
   setRgStatus: () => {},
   cnh: '',
   setCnh: () => {},
-  cnhStatus: true,
-  setCnhStatus: () => {},
   age: '',
   setAge: () => {},
   ageStatus: true,
   setAgeStatus: () => {},
   academicTitle: '',
   setAcademicTitle: () => {},
-  academicTitleStatus: true,
-  setAcademicTitleStatus: () => {},
 };
 
 export default FormTeacher;

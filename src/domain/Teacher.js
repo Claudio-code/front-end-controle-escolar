@@ -1,7 +1,7 @@
 import GenericPeople from './GenericPeople';
 
 class Teacher extends GenericPeople {
-  constructor(name, email, rg, cpf, cnh, age) {
+  constructor(name, email, rg, cpf, cnh, age, academicTitle) {
     super();
     this.name = name;
     this.email = email;
@@ -9,6 +9,7 @@ class Teacher extends GenericPeople {
     this.cpf = cpf;
     this.cnh = cnh;
     this.age = age;
+    this.academicTitle = academicTitle;
   }
 
   setId(id) {
