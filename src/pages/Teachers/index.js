@@ -21,6 +21,14 @@ function Teachers() {
           onClick={() => history.push('/Professores/Cadastros')}
         />
       </ContainerCard>
+      <ContextTitle title="Editar" />
+      <ContainerCard>
+        <CardMenu
+          title="Editar Professor"
+          content="Editar apenas do professor."
+          onClick={() => history.push('/Professores/Update')}
+        />
+      </ContainerCard>
     </Container>
   );
 }

@@ -14,7 +14,7 @@ export default function teacher(state = INITIAL_STATE, action) {
         draft.teacherList = action.payload.teacherList;
         break;
       }
-      case '@teacher/TEACHER_REGISTRATION': {
+      case '@teacher/TEACHER_SET_ONE': {
         draft.teacher = action.payload.teacher;
         break;
       }
