@@ -12,6 +12,7 @@ import UpdateStudent from '../pages/UpdateStudent';
 import StudentAndGuardianRegistration from '../pages/StudentAndGuardianRegistration';
 import Teachers from '../pages/Teachers';
 import TeacherRegistration from '../pages/TeacherRegistration';
+import UpdateTeacher from '../pages/UpdateTeacher';
 import Disciplines from '../pages/Disciplines';
 import Cursos from '../pages/Cursos';
 import Turmas from '../pages/Turmas';
@@ -61,6 +62,12 @@ export default function Routes() {
       <Route
         path="/Professores/Cadastros"
         component={TeacherRegistration}
+        exact
+        isPrivate
+      />
+      <Route
+        path="/Professores/Update"
+        component={UpdateTeacher}
         exact
         isPrivate
       />

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import produce from 'immer';
 
 const INITIAL_STATE = {
@@ -7,7 +8,7 @@ const INITIAL_STATE = {
 };
 
 export default function auth(state = INITIAL_STATE, action) {
-  return produce(state, draft => {
+  return produce(state, (draft) => {
     switch (action.type) {
       case '@auth/SIGN_IN_REQUEST': {
         draft.loading = true;
@@ -33,5 +34,4 @@ export default function auth(state = INITIAL_STATE, action) {
         return state;
     }
   });
-
 }

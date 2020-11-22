@@ -3,19 +3,19 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  student: null,
-  studentsList: [],
+  teacher: null,
+  teacherList: [],
 };
 
-export default function student(state = INITIAL_STATE, action) {
+export default function teacher(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
-      case '@student/STUDENT_SET_ALL': {
-        draft.studentsList = action.payload.studentList;
+      case '@teacher/TEACHER_SET_ALL': {
+        draft.teacherList = action.payload.teacherList;
         break;
       }
-      case '@student/SET_STUDENT': {
-        draft.student = action.payload.student;
+      case '@teacher/TEACHER_SET_ONE': {
+        draft.teacher = action.payload.teacher;
         break;
       }
       default:

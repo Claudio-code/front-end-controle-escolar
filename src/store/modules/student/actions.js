@@ -88,4 +88,3 @@ export function createResponsible(responsible) {
     payload: { responsible },
   };
 }
-

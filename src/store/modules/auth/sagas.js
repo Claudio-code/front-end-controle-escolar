@@ -27,7 +27,6 @@ export function* signIn({ payload }) {
 
     setTimeout(() => history.push('/dashboard'), 1000);
   } catch (error) {
-    console.log(error);
     toast.error('Esse usuario não existe.');
     yield put(signFailure());
   }

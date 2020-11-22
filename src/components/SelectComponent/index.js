@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   MenuItem,
@@ -8,25 +8,36 @@ import {
 
 import { Label } from './styles';
 
-function SelectComponent({
+const SelectComponent = ({
   id, label, value, onchangeValue, options,
-}) {
+}) => {
+  useEffect(() => {
+    if (options[0]) {
+      const event = {
+        target: {
+          value: options[0],
+        },
+      };
+
+      onchangeValue(event);
+    }
+  }, []);
+
   return (
     <FormControl fullWidth>
-      <Label id={String(id)}>{ label }</Label>
+      <Label id={id}>{ label }</Label>
       <Select
-        id={String(id)}
-        labelId={String(id)}
+        id={`${label}-${Math.random()}`}
         value={value}
         onChange={onchangeValue}
       >
         {options && options.map((item) => (
-          <MenuItem key={String(item)} value={item}>{ item }</MenuItem>
+          <MenuItem key={`${label}-${Math.random()}`} value={item}>{ item }</MenuItem>
         ))}
       </Select>
     </FormControl>
   );
-}
+};
 
 SelectComponent.propTypes = {
   id: PropTypes.string,

@@ -13,11 +13,9 @@ import { StudentRegistrationAndResponsibleAction } from '../../store/modules/stu
 import {
   Container,
   HorizontalSeparator,
-  ButtonError,
   ButtonGoBack,
   ButtonSucess,
   ContainerButtons,
-  VerticalSeparator,
 } from '../../styles/global';
 import { SeparatorMargin } from './styles';
 
