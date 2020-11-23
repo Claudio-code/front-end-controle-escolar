@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-export default class User {
+class User {
   constructor({ email, password }) {
     this.username = this.validateEmail(email);
     this.password = this.validatePassword(password);
@@ -23,3 +23,5 @@ export default class User {
     return email;
   }
 }
+
+export default User;

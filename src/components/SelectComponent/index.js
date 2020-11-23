@@ -29,6 +29,7 @@ const SelectComponent = ({
       <Select
         id={`${label}-${Math.random()}`}
         value={value}
+        defaultValue={value}
         onChange={onchangeValue}
       >
         {options && options.map((item) => (

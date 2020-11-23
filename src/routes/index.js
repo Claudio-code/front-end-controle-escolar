@@ -16,6 +16,8 @@ import UpdateTeacher from '../pages/UpdateTeacher';
 import Disciplines from '../pages/Disciplines';
 import Cursos from '../pages/Cursos';
 import Turmas from '../pages/Turmas';
+import Topics from '../pages/Topics';
+import TopicRegistration from '../pages/TopicRegistration';
 
 export default function Routes() {
   return (
@@ -68,6 +70,18 @@ export default function Routes() {
       <Route
         path="/Professores/Update"
         component={UpdateTeacher}
+        exact
+        isPrivate
+      />
+      <Route
+        path="/Topicos"
+        component={Topics}
+        exact
+        isPrivate
+      />
+      <Route
+        path="/Topicos/Cadastros"
+        component={TopicRegistration}
         exact
         isPrivate
       />

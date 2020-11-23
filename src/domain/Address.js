@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import cepPromise from 'cep-promise';
 
-export default class Address {
+class Address {
   constructor(city, cep, country, public_place, number, status = true) {
     this.city = city;
     this.cep = cep;
@@ -37,8 +37,9 @@ export default class Address {
 
       return response;
     } catch (error) {
-      console.log(error);
       return true;
     }
   }
 }
+
+export default Address;

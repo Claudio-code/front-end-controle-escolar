@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
@@ -88,7 +88,7 @@ const FormTeacher = ({
             onchangeValue={handleChangeName}
             label="Nome do Professor"
             errorMessage="Insira um valor de nome sem numeros ou simbolos."
-            infoMessage="Insira o nome do estudante."
+            infoMessage="Insira o nome valido."
           />
         </Grid>
         <Grid item xs={6}>

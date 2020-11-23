@@ -37,6 +37,9 @@ export default function Header() {
             <Button onClick={() => history.push('/Professores')}>
               Professores
             </Button>
+            <Button onClick={() => history.push('/Topicos')}>
+              Topicos
+            </Button>
             <Button onClick={() => history.push('/Disiplinas')}>
               Disiplinas
             </Button>

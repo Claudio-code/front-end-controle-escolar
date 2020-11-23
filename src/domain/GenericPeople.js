@@ -1,4 +1,4 @@
-export default class GenericPeople {
+class GenericPeople {
   static validateName(name) {
     const regex = /([^a-zà-úA-ZÀ-Ú ]|[äåæËÎÏÐðÑ×÷ØÝÞß])/;
     return regex.test(name);
@@ -34,3 +34,5 @@ export default class GenericPeople {
     return true;
   }
 }
+
+export default GenericPeople;

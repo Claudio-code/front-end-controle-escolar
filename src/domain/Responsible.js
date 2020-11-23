@@ -1,6 +1,6 @@
 import GenericPeople from './GenericPeople';
 
-export default class Responsible extends GenericPeople {
+class Responsible extends GenericPeople {
   constructor(name, email, rg, cpf, kinship, status = true) {
     super();
     this.name = name;
@@ -19,3 +19,5 @@ export default class Responsible extends GenericPeople {
     this.student_id = id;
   }
 }
+
+export default Responsible;

@@ -24,6 +24,7 @@ function InputComponent({
       <Input
         id={id}
         value={value}
+        defaultValue={value}
         onChange={onchangeValue}
         type={type}
       />
