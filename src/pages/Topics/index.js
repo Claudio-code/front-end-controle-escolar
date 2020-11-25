@@ -20,6 +20,14 @@ const Topics = () => (
         onClick={() => history.push('/Topicos/Cadastros')}
       />
     </ContainerCard>
+    <ContextTitle title="Editar" />
+    <ContainerCard>
+      <CardMenu
+        title="Atualizar um topico topico"
+        content="Atualiza apenas o topico."
+        onClick={() => history.push('/Topicos/Update')}
+      />
+    </ContainerCard>
   </Container>
 );
 

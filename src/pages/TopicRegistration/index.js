@@ -16,7 +16,7 @@ const TopicRegistration = () => {
   const dispacth = useDispatch();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [amountHours, setAmountHours] = useState(0);
+  const [amountHours, setAmountHours] = useState('');
 
   const [nameStatus, setNameStatus] = useState(false);
   const [descriptionStatus, setDescriptionStatus] = useState(false);

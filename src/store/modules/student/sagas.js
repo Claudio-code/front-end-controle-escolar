@@ -95,7 +95,7 @@ export function* getOneStudentWithAllResponsibleAndAddress({ payload: { studentI
 
 export function* updateStudent({ payload: { student } }) {
   try {
-    yield call(api.put, 'api/student/', student);
+    yield call(api.put, `api/student/${student.id}`, { Student: student });
 
     toast.success('Edição do estudante feita com sucesso.');
   } catch (error) {

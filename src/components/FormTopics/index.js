@@ -35,9 +35,9 @@ const FormTopics = ({
   };
 
   const handleChangeAmountHours = (event) => {
-    const result = Topics.validateNumbers(event.target.value);
+    const result = Topics.validateNumbers(Number(event.target.value));
     setAmountHoursStatus(!result);
-    setAmountHours(event.target.value);
+    setAmountHours(String(event.target.value));
   };
 
   return (
@@ -97,7 +97,7 @@ FormTopics.propTypes = {
   setDescription: PropTypes.func,
   descriptionStatus: PropTypes.bool,
   setDescriptionStatus: PropTypes.func,
-  amountHours: PropTypes.number,
+  amountHours: PropTypes.string,
   setAmountHours: PropTypes.func,
   amountHoursStatus: PropTypes.bool,
   setAmountHoursStatus: PropTypes.func,
@@ -113,7 +113,7 @@ FormTopics.defaultProps = {
   setDescription: () => {},
   descriptionStatus: false,
   setDescriptionStatus: () => {},
-  amountHours: PropTypes.number,
+  amountHours: '',
   setAmountHours: () => {},
   amountHoursStatus: false,
   setAmountHoursStatus: () => {},

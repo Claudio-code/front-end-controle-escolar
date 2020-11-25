@@ -22,7 +22,6 @@ import {
 const UpdateTeacher = () => {
   const dispatch = useDispatch();
   const [modalState, setModalState] = useState(false);
-  const [teacherListData, setTeacherListData] = useState([]);
   const teacherList = useSelector((state) => state.teacher.teacherList);
 
   useEffect(() => {
@@ -30,8 +29,8 @@ const UpdateTeacher = () => {
   }, []);
 
   useEffect(() => {
-    setTeacherListData(teacherList);
-  }, [teacherList]);
+    dispatch(getAllTeacherAction());
+  }, [modalState]);
 
   const handleDeleteTeacher = (item) => {
     dispatch(deleteTeacher(item.id));
@@ -46,7 +45,7 @@ const UpdateTeacher = () => {
   return (
     <ContainerTable>
       <Title>Lista de Professores</Title>
-      <TableContainer component={Paper} style={{ backgroundColor: '#f5f5f5', width: 'min-content' }}>
+      <TableContainer component={Paper} style={{ backgroundColor: '#f5f5f5', width: 'max-content' }}>
         <TableHeader>
           <TableRow>
             <TableCellHeader>Nome</TableCellHeader>
@@ -60,8 +59,8 @@ const UpdateTeacher = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {teacherListData.length && teacherListData.map((item) => (
-            <TableRow>
+          {teacherList.length && teacherList.map((item) => (
+            <TableRow key={item.name}>
               <TableCellBody>{item.name}</TableCellBody>
               <TableCellBody>{item.email}</TableCellBody>
               <TableCellBody>{item.cpf}</TableCellBody>

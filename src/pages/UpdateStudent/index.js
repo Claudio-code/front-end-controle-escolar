@@ -79,7 +79,7 @@ function UpdateStudent() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {listStudentData.map((row) => (
+            {listStudent.length && listStudent.map((row) => (
               <TableRow key={row.name}>
                 <TableCellBody>{row.name}</TableCellBody>
                 <TableCellBody>{row.email}</TableCellBody>

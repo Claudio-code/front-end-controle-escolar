@@ -18,6 +18,7 @@ import Cursos from '../pages/Cursos';
 import Turmas from '../pages/Turmas';
 import Topics from '../pages/Topics';
 import TopicRegistration from '../pages/TopicRegistration';
+import UpdateTopics from '../pages/UpdateTopics';
 
 export default function Routes() {
   return (
@@ -82,6 +83,12 @@ export default function Routes() {
       <Route
         path="/Topicos/Cadastros"
         component={TopicRegistration}
+        exact
+        isPrivate
+      />
+      <Route
+        path="/Topicos/Update"
+        component={UpdateTopics}
         exact
         isPrivate
       />
