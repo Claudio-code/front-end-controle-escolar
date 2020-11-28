@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 
 import InputComponent from '../InputComponent';
-import Topics from '../../domain/Topics';
-
 import { Container, ContainerHeader, Title } from './styles';
+import Discipline from '../../domain/Discipline';
 
-const FormTopics = ({
+const FormDiscipline = ({
   title,
   name,
   setName,
@@ -28,13 +27,13 @@ const FormTopics = ({
   };
 
   const handleChangeDescription = (event) => {
-    const result = Topics.validateLetters(event.target.value);
+    const result = Discipline.validateLetters(event.target.value);
     setDescriptionStatus(result);
     setDescription(event.target.value);
   };
 
   const handleChangeAmountHours = (event) => {
-    const result = Topics.validateNumbers(Number(event.target.value));
+    const result = Discipline.validateNumbers(Number(event.target.value));
     setAmountHoursStatus(!result);
     setAmountHours(String(event.target.value));
   };
@@ -52,8 +51,8 @@ const FormTopics = ({
             value={name}
             errorStatus={nameStatus}
             onchangeValue={handleChangeName}
-            label="Nome do Topico"
-            errorMessage="Insira um valor de nome sem numeros ou simbolos."
+            label="Nome da Disiplina"
+            errorMessage="Insira um valor de nome sem simbolos."
             infoMessage="Insira um nome valido."
           />
         </Grid>
@@ -64,7 +63,7 @@ const FormTopics = ({
             value={amountHours}
             errorStatus={amountHoursStatus}
             onchangeValue={handleChangeAmountHours}
-            label="Carga horaria do Topico"
+            label="Carga horaria da Disiplina"
             errorMessage="Insira um numero inteiro, sem ponto, sem virgula."
             infoMessage="Insira um numero inteiro."
           />
@@ -76,7 +75,7 @@ const FormTopics = ({
             value={description}
             errorStatus={descriptionStatus}
             onchangeValue={handleChangeDescription}
-            label="Descrição do Topico"
+            label="Descrição da Disiplina"
             errorMessage="Insira um valor de nome sem numeros ou simbolos."
             infoMessage="Insira um nome valido."
           />
@@ -86,7 +85,7 @@ const FormTopics = ({
   );
 };
 
-FormTopics.propTypes = {
+FormDiscipline.propTypes = {
   title: PropTypes.string,
   name: PropTypes.string,
   setName: PropTypes.func,
@@ -102,7 +101,7 @@ FormTopics.propTypes = {
   setAmountHoursStatus: PropTypes.func,
 };
 
-FormTopics.defaultProps = {
+FormDiscipline.defaultProps = {
   title: 'Titulo do form',
   name: '',
   setName: () => {},
@@ -118,4 +117,4 @@ FormTopics.defaultProps = {
   setAmountHoursStatus: () => {},
 };
 
-export default FormTopics;
+export default FormDiscipline;

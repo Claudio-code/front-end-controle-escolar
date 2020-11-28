@@ -4,7 +4,14 @@ import auth from './auth/sagas';
 import student from './student/sagas';
 import teacher from './teacher/sagas';
 import topics from './topics/sagas';
+import disipline from './disipline/sagas';
 
 export default function* rootSaga() {
-  return yield all([auth, student, teacher, topics]);
+  return yield all([
+    auth,
+    student,
+    teacher,
+    topics,
+    disipline,
+  ]);
 }
