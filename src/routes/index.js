@@ -21,6 +21,8 @@ import TopicRegistration from '../pages/TopicRegistration';
 import UpdateTopics from '../pages/UpdateTopics';
 import DisciplineRegistration from '../pages/DisciplineRegistration';
 import UpdateDiscipline from '../pages/UpdateDiscipline';
+import AddCoordinatorDiscipline from '../pages/AddCoordinatorDiscipline';
+import AddTeacherDiscipline from '../pages/AddTeacherDiscipline';
 
 const Routes = () => (
   <Switch>
@@ -102,6 +104,18 @@ const Routes = () => (
     <Route
       path="/Disiplinas/Update"
       component={UpdateDiscipline}
+      exact
+      isPrivate
+    />
+    <Route
+      path="/Disiplinas/AdicionarProfessor"
+      component={AddTeacherDiscipline}
+      exact
+      isPrivate
+    />
+    <Route
+      path="/Disiplinas/AdicionarCoordenador"
+      component={AddCoordinatorDiscipline}
       exact
       isPrivate
     />

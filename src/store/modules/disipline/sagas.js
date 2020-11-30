@@ -51,7 +51,29 @@ export function* deleteDiscipline({ payload: { DisciplineId } }) {
   }
 }
 
+export function* addTeacher({ payload: { Discipline, Teacher } }) {
+  try {
+    yield call(api.put, `api/discipline/addTeacher/${Discipline.id}`, { TeacherId: Teacher.id });
+
+    toast.success('Adicionado o professor.');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
+export function* addCoordinator({ payload: { Discipline, Teacher } }) {
+  try {
+    yield call(api.put, `api/discipline/addCoordinator/${Discipline.id}`, { TeacherId: Teacher.id });
+
+    toast.success('Adicionado o coordenador da disiplina.');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
 export default all([
+  takeLatest('@disipline/ADD_COORDINATOR_DISIPLINE', addCoordinator),
+  takeLatest('@disipline/ADD_TEACHER_DISIPLINE', addTeacher),
   takeLatest('@disipline/DISIPLINE_DELETE', deleteDiscipline),
   takeLatest('@disipline/DISIPLINE_UPDATE', updateDiscipline),
   takeLatest('@disipline/DISIPLINE_GET_ALL', getAllDiscipline),

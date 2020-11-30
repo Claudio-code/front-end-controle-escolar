@@ -5,28 +5,25 @@ import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {
-  Update, Delete, DoneAll, HighlightOff,
-} from '@material-ui/icons';
 
-import { ButtonUpdate, ButtonError } from '../../styles/global';
+import { ButtonUpdate } from '../../styles/global';
 import {
   TableHeader, TableCellHeader, TableCellBody, Title,
 } from './styles';
-
-import {
-  deleteDiscipline,
-  getAllDisciplines,
-  setOneDiscipline,
-} from '../../store/modules/disipline/actions';
+import { getAllDisciplines, setOneDiscipline } from '../../store/modules/disipline/actions';
 import { ContainerTable } from '../UpdateTopics/styles';
-import ModalUpdateDisipline from '../../components/ModalUpdateDisipline';
+import ModalAddCoordinator from '../../components/ModalAddCoordinator';
 
-const UpdateDiscipline = () => {
+const AddCoordinatorDiscipline = () => {
   const dispatch = useDispatch();
   const [modalState, setModalState] = useState(false);
   const [disciplinesData, setDisciplinesData] = useState([]);
   const disciplineList = useSelector((state) => state.disipline.disiplineList);
+
+  const handleUpdate = (item) => {
+    dispatch(setOneDiscipline(item));
+    setModalState(!modalState);
+  };
 
   useEffect(() => {
     dispatch(getAllDisciplines());
@@ -40,19 +37,9 @@ const UpdateDiscipline = () => {
     dispatch(getAllDisciplines());
   }, [modalState]);
 
-  const handleUpdate = (item) => {
-    dispatch(setOneDiscipline(item));
-    setModalState(true);
-  };
-
-  const handleDelete = (item) => {
-    dispatch(deleteDiscipline(item.id));
-    dispatch(getAllDisciplines());
-  };
-
   return (
     <ContainerTable>
-      <Title>Lista dos Topicos das Disiplinas</Title>
+      <Title>Lista de Disiplina para adicionar um Coordenador</Title>
       <TableContainer component={Paper} style={{ backgroundColor: '#f5f5f5', width: 'max-content' }}>
         <Table>
           <TableHeader>
@@ -60,7 +47,7 @@ const UpdateDiscipline = () => {
               <TableCellHeader>Nome</TableCellHeader>
               <TableCellHeader>Descrição</TableCellHeader>
               <TableCellHeader>carga horaria</TableCellHeader>
-              <TableCellHeader>Status</TableCellHeader>
+              <TableCellHeader>Nome do Coordenador</TableCellHeader>
               <TableCellHeader>Opções</TableCellHeader>
             </TableRow>
           </TableHeader>
@@ -70,21 +57,18 @@ const UpdateDiscipline = () => {
                 <TableCellBody>{ item.name }</TableCellBody>
                 <TableCellBody>{ item.description }</TableCellBody>
                 <TableCellBody>{ `${item.amountHours} horas` }</TableCellBody>
-                <TableCellBody>{item.status ? (<DoneAll />) : (<HighlightOff />)}</TableCellBody>
+                <TableCellBody>{ item.coordinator ? `${item.coordinator.academicTitle} ${item.coordinator.name}` : 'Não há coordenador' }</TableCellBody>
                 <TableCellBody>
                   <ButtonUpdate onClick={() => handleUpdate(item)}>
-                    <Update />
+                    Adicionar Coordenador
                   </ButtonUpdate>
-                  <ButtonError onClick={() => handleDelete(item)}>
-                    <Delete />
-                  </ButtonError>
                 </TableCellBody>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <ModalUpdateDisipline
+      <ModalAddCoordinator
         modalState={modalState}
         setModalState={setModalState}
       />
@@ -92,4 +76,4 @@ const UpdateDiscipline = () => {
   );
 };
 
-export default UpdateDiscipline;
+export default AddCoordinatorDiscipline;

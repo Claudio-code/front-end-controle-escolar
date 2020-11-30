@@ -56,7 +56,7 @@ const ModalUpdateDisipline = ({ modalState, setModalState }) => {
       if (!disipline) {
         return;
       }
-      console.log(disipline)
+
       setName(disipline.name);
       setDescription(disipline.description);
       setAmountHours(String(disipline.amountHours));

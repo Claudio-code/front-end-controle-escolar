@@ -29,6 +29,19 @@ function Disciplines() {
           onClick={() => history.push('/Disiplinas/Update')}
         />
       </ContainerCard>
+      <ContextTitle title="Processos" />
+      <ContainerCard>
+        <CardMenu
+          title="Adicionar Professor na disiplina"
+          content="vincular o professor a disiplina."
+          onClick={() => history.push('/Disiplinas/AdicionarProfessor')}
+        />
+        <CardMenu
+          title="Adicionar Coordenador na disiplina"
+          content="vincular o professor para coordenar a disiplina."
+          onClick={() => history.push('/Disiplinas/AdicionarCoordenador')}
+        />
+      </ContainerCard>
     </Container>
   );
 }
