@@ -8,10 +8,13 @@ import Paper from '@material-ui/core/Paper';
 
 import { ButtonUpdate } from '../../styles/global';
 import {
-  TableHeader, TableCellHeader, TableCellBody, Title,
+  TableHeader,
+  TableCellHeader,
+  TableCellBody,
+  Title,
+  ContainerTable,
 } from './styles';
 import { getAllDisciplines, setOneDiscipline } from '../../store/modules/disipline/actions';
-import { ContainerTable } from '../UpdateTopics/styles';
 import ModalAddTeacher from '../../components/ModalAddTeacher';
 
 const AddTeacherDiscipline = () => {

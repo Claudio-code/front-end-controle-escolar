@@ -11,7 +11,11 @@ import {
 
 import { ButtonUpdate, ButtonError } from '../../styles/global';
 import {
-  TableHeader, TableCellHeader, TableCellBody, Title,
+  TableHeader,
+  TableCellHeader,
+  TableCellBody,
+  Title,
+  ContainerTable,
 } from './styles';
 
 import {
@@ -19,7 +23,6 @@ import {
   getAllDisciplines,
   setOneDiscipline,
 } from '../../store/modules/disipline/actions';
-import { ContainerTable } from '../UpdateTopics/styles';
 import ModalUpdateDisipline from '../../components/ModalUpdateDisipline';
 
 const UpdateDiscipline = () => {
