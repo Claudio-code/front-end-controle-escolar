@@ -14,12 +14,14 @@ import Teachers from '../pages/Teachers';
 import TeacherRegistration from '../pages/TeacherRegistration';
 import UpdateTeacher from '../pages/UpdateTeacher';
 import Disciplines from '../pages/Disciplines';
-import Cursos from '../pages/Cursos';
+import Courses from '../pages/Courses';
 import Turmas from '../pages/Turmas';
 import DisciplineRegistration from '../pages/DisciplineRegistration';
 import UpdateDiscipline from '../pages/UpdateDiscipline';
 import AddCoordinatorDiscipline from '../pages/AddCoordinatorDiscipline';
 import AddTeacherDiscipline from '../pages/AddTeacherDiscipline';
+import CourseRegistration from '../pages/CourseRegistration';
+import CourseRegistrationAndAddDisciplines from '../pages/CourseRegistrationAndAddDisciplines';
 
 const Routes = () => (
   <Switch>
@@ -98,8 +100,30 @@ const Routes = () => (
       exact
       isPrivate
     />
-    <Route path="/Disiplinas" component={Disciplines} isPrivate />
-    <Route path="/Cursos" component={Cursos} isPrivate />
+    <Route
+      path="/Disiplinas"
+      component={Disciplines}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Cursos"
+      component={Courses}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Cursos/Cadastro"
+      component={CourseRegistration}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Cursos/Cadastro/Adicionar/Disiplinas"
+      component={CourseRegistrationAndAddDisciplines}
+      isPrivate
+      exact
+    />
     <Route path="/Turmas" component={Turmas} isPrivate />
   </Switch>
 );

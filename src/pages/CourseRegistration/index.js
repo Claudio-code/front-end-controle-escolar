@@ -2,48 +2,48 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import Discipline from '../../domain/Discipline';
-import FormDiscipline from '../../components/FormDiscipline';
+import { courseRegistrationAction } from '../../store/modules/course/actions';
+import Course from '../../domain/Course';
+import FormCourse from '../../components/FormCourse';
 import {
   Container,
   ContainerButtons,
   ButtonSucess,
   ButtonGoBack,
 } from '../../styles/global';
-import { disciplineRegistrationAction } from '../../store/modules/disipline/actions';
 
-const DisciplineRegistration = () => {
+const CourseRegistration = () => {
   const dispacth = useDispatch();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [amountHours, setAmountHours] = useState('');
+  const [totalAmountHours, setTotalAmountHours] = useState('');
 
   const [nameStatus, setNameStatus] = useState(false);
   const [descriptionStatus, setDescriptionStatus] = useState(false);
-  const [amountHoursStatus, setAmountHoursStatus] = useState(false);
+  const [totalAmountHoursStatus, setTotalAmountHoursStatus] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const disciplineRes = Discipline.validateAllData([
-      name, description, amountHours,
+    const courseRes = Course.validateAllData([
+      name, description, totalAmountHours,
     ]);
 
-    if (nameStatus || descriptionStatus || amountHoursStatus) {
+    if (nameStatus || descriptionStatus || totalAmountHoursStatus) {
       return toast.error('Os dados do Formulario da disiplina estão errados.');
     }
-    if (!disciplineRes) {
-      return toast.error('Preencha os campos corretamente.');
+    if (!courseRes) {
+      return toast.error('Preencha os campos corretamente¹');
     }
 
-    const newDiscipline = new Discipline(name, description, amountHours);
-    dispacth(disciplineRegistrationAction(newDiscipline));
+    const newCourse = new Course(name, description, totalAmountHours);
+    dispacth(courseRegistrationAction(newCourse));
   };
 
   return (
     <Container>
       <form onSubmit={handleSubmit}>
-        <FormDiscipline
-          title="Cadastrar a disiplina"
+        <FormCourse
+          title="Cadastrar o Curso"
           name={name}
           setName={setName}
           nameStatus={nameStatus}
@@ -52,10 +52,10 @@ const DisciplineRegistration = () => {
           setDescription={setDescription}
           descriptionStatus={descriptionStatus}
           setDescriptionStatus={setDescriptionStatus}
-          amountHours={amountHours}
-          setAmountHours={setAmountHours}
-          amountHoursStatus={amountHoursStatus}
-          setAmountHoursStatus={setAmountHoursStatus}
+          totalAmountHours={totalAmountHours}
+          setTotalAmountHours={setTotalAmountHours}
+          totalAmountHoursStatus={totalAmountHoursStatus}
+          setTotalAmountHoursStatus={setTotalAmountHoursStatus}
         />
         <ContainerButtons>
           <ButtonGoBack>
@@ -70,4 +70,4 @@ const DisciplineRegistration = () => {
   );
 };
 
-export default DisciplineRegistration;
+export default CourseRegistration;

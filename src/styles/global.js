@@ -1,6 +1,6 @@
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 
 export const Container = styled.div`
   display: flex;
@@ -102,4 +102,11 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+`;
+
+export const Title = styled(Typography).attrs({
+  variant: 'h5',
+})`
+  font-weight: bold !important;
+  color: #616161 !important;
 `;
