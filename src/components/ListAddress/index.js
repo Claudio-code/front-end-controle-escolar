@@ -17,10 +17,9 @@ import {
   TableHeader, TableCellHeader, TableCellBody, Title, Container,
 } from './styles';
 
-import Address from '../../domain/Address';
-
 import {
   updateAddress,
+  deleteAddress,
   getOneStudentWithAllResponsibleAndAddressAction,
 } from '../../store/modules/student/actions';
 
@@ -40,24 +39,12 @@ function ListAddress() {
     setModalState(!modalState);
   };
 
-  const updateStateAddress = (address) => {
-    const newAddress = new Address(
-      address.city,
-      address.cep,
-      address.country,
-      address.public_place,
-      address.number,
-      !address.status,
-    );
-    newAddress.setId(address.id);
-    newAddress.setStudentId(address.student_id);
-
-    dispatch(updateAddress(newAddress));
+  const handleDelete = (address) => {
+    dispatch(deleteAddress(address.id));
     dispatch(getOneStudentWithAllResponsibleAndAddressAction(
       address.student_id,
     ));
 
-    return newAddress;
   };
 
   return (
@@ -72,7 +59,6 @@ function ListAddress() {
               <TableCellHeader>public_place</TableCellHeader>
               <TableCellHeader>number</TableCellHeader>
               <TableCellHeader>cep</TableCellHeader>
-              <TableCellHeader>status</TableCellHeader>
               <TableCellHeader>Opções</TableCellHeader>
             </TableRow>
           </TableHeader>
@@ -84,12 +70,11 @@ function ListAddress() {
                 <TableCellBody>{row.public_place}</TableCellBody>
                 <TableCellBody>{row.number}</TableCellBody>
                 <TableCellBody>{row.cep}</TableCellBody>
-                <TableCellBody>{row.status ? (<DoneAll />) : (<HighlightOff />)}</TableCellBody>
                 <TableCellBody>
                   <ButtonUpdate onClick={() => openModalUpdateAddress(row)}>
                     <Update />
                   </ButtonUpdate>
-                  <ButtonError onClick={() => updateStateAddress(row)}>
+                  <ButtonError onClick={() => handleDelete(row)}>
                     <Delete />
                   </ButtonError>
                 </TableCellBody>

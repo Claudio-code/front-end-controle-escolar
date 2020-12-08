@@ -132,6 +132,7 @@ export function* updateResponsible({ payload: { responsible } }) {
     toast.error(error.response.data.error);
   }
 }
+
 export function* createResponsible({ payload: { responsible } }) {
   try {
     yield call(api.post, 'api/responsible/', responsible);
@@ -142,7 +143,40 @@ export function* createResponsible({ payload: { responsible } }) {
   }
 }
 
+export function* deleteStudent({ payload: { studentId } }) {
+  try {
+    yield call(api.delete, `api/student/${studentId}`);
+
+    toast.success('Estudande deletado com sucesso.');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
+export function* deleteAddress({ payload: { addressId } }) {
+  try {
+    yield call(api.delete, `api/address/${addressId}`);
+
+    toast.success('Endereço removido com sucesso.');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
+export function* deleteResponsible({ payload: { responsibleId } }) {
+  try {
+    yield call(api.delete, `api/responsible/${responsibleId}`);
+
+    toast.success('Responsavel removido com sucesso.');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
 export default all([
+  takeLatest('@student/DELETE_RESPONSIBLE', deleteResponsible),
+  takeLatest('@student/DELETE_ADDRESS', deleteAddress),
+  takeLatest('@student/STUDENT_DELETE', deleteStudent),
   takeLatest('@student/GET_ONE_STUDENT_WITH_ALL_RESPONSIBLE_AND_ADDRESS', getOneStudentWithAllResponsibleAndAddress),
   takeLatest('@student/STUDENT_REGISTRATION_AND_RESPONSIBLE', studentAndResponsibleRegistration),
   takeLatest('@student/STUDENT_REGISTRATION_AND_ADDRESS', studentAndAddressRegistration),

@@ -7,7 +7,7 @@ class Responsible extends GenericPeople {
     this.email = email;
     this.rg = rg;
     this.cpf = cpf;
-    this.kinship = kinship;
+    this.parentesco = kinship;
     this.status = status;
   }
 

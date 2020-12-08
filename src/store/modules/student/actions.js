@@ -88,3 +88,24 @@ export function createResponsible(responsible) {
     payload: { responsible },
   };
 }
+
+export function deleteStudent(studentId) {
+  return {
+    type: '@student/STUDENT_DELETE',
+    payload: { studentId },
+  };
+}
+
+export function deleteAddress(addressId) {
+  return {
+    type: '@student/DELETE_ADDRESS',
+    payload: { addressId },
+  };
+}
+
+export function deleteResponsible(responsibleId) {
+  return {
+    type: '@student/DELETE_RESPONSIBLE',
+    payload: { responsibleId },
+  };
+}

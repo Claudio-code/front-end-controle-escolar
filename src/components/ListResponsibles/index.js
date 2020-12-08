@@ -21,6 +21,7 @@ import Responsible from '../../domain/Responsible';
 
 import {
   updateResponsible,
+  deleteResponsible,
   getOneStudentWithAllResponsibleAndAddressAction,
 } from '../../store/modules/student/actions';
 
@@ -40,19 +41,8 @@ function ListResponsibles() {
     setModalState(!modalState);
   };
 
-  const updateStateResponsible = (responsible) => {
-    const newResponsible = new Responsible(
-      responsible.name,
-      responsible.email,
-      responsible.rg,
-      responsible.cpf,
-      responsible.kinship,
-      !responsible.status,
-    );
-    newResponsible.setId(responsible.id);
-    newResponsible.setStudentId(responsible.student_id);
-
-    dispatch(updateResponsible(newResponsible));
+  const deleteStateResponsible = (responsible) => {
+    dispatch(deleteResponsible(responsible.id));
     dispatch(getOneStudentWithAllResponsibleAndAddressAction(
       responsible.student_id,
     ));
@@ -87,7 +77,7 @@ function ListResponsibles() {
                   <ButtonUpdate onClick={() => openModalUpdateResponsibles(row)}>
                     <Update />
                   </ButtonUpdate>
-                  <ButtonError onClick={() => updateStateResponsible(row)}>
+                  <ButtonError onClick={() => deleteStateResponsible(row)}>
                     <Delete />
                   </ButtonError>
                 </TableCellBody>

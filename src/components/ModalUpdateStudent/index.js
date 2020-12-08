@@ -136,7 +136,7 @@ function ModalUpdateStudent({ modalState, setModalState }) {
               </ButtonSucess>
             </ContainerButtons>
           </form>
-          {student && student.Addresses && student.Addresses.length >= 0 ? (
+          {student && student.Addresses && student.Addresses.length > 0 ? (
             <ListAddress />
           ) : (
             <ContainerRegister>
