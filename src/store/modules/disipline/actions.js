@@ -41,13 +41,6 @@ export function addTeacherDiscipline({ Discipline, Teacher }) {
   };
 }
 
-export function addCoordinatorDiscipline({ Discipline, Teacher }) {
-  return {
-    type: '@disipline/ADD_COORDINATOR_DISIPLINE',
-    payload: { Discipline, Teacher },
-  };
-}
-
 export function deleteDiscipline(DisciplineId) {
   return {
     type: '@disipline/DISIPLINE_DELETE',

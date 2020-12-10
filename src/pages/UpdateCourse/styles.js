@@ -4,6 +4,7 @@ import {
   TableCell,
   Typography,
 } from '@material-ui/core';
+
 import { Container } from '../../styles/global';
 
 export const TableCellHeader = styled(TableCell).attrs({
@@ -21,11 +22,6 @@ export const TableHeader = styled(TableHead)`
   background-color: #212121 !important;
 `;
 
-export const Wapper = styled.div`
-  margin: 4vh;
-  border-radius: 5px;
-  background-color: #FFF;
-`;
 
 export const Title = styled(Typography).attrs({
   variant: 'h5',

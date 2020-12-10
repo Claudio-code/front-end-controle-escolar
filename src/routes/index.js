@@ -18,9 +18,10 @@ import Courses from '../pages/Courses';
 import Turmas from '../pages/Turmas';
 import DisciplineRegistration from '../pages/DisciplineRegistration';
 import UpdateDiscipline from '../pages/UpdateDiscipline';
-import AddCoordinatorDiscipline from '../pages/AddCoordinatorDiscipline';
 import AddTeacherDiscipline from '../pages/AddTeacherDiscipline';
 import CourseRegistration from '../pages/CourseRegistration';
+import UpdateCourse from '../pages/UpdateCourse';
+import AddCoordinatorCourse from '../pages/AddCoordinatorCourse';
 import CourseRegistrationAndAddDisciplines from '../pages/CourseRegistrationAndAddDisciplines';
 
 const Routes = () => (
@@ -95,12 +96,6 @@ const Routes = () => (
       isPrivate
     />
     <Route
-      path="/Disiplinas/AdicionarCoordenador"
-      component={AddCoordinatorDiscipline}
-      exact
-      isPrivate
-    />
-    <Route
       path="/Disiplinas"
       component={Disciplines}
       isPrivate
@@ -113,6 +108,12 @@ const Routes = () => (
       exact
     />
     <Route
+      path="/Cursos/Update"
+      component={UpdateCourse}
+      isPrivate
+      exact
+    />
+    <Route
       path="/Cursos/Cadastro"
       component={CourseRegistration}
       isPrivate
@@ -121,6 +122,12 @@ const Routes = () => (
     <Route
       path="/Cursos/Cadastro/Adicionar/Disiplinas"
       component={CourseRegistrationAndAddDisciplines}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Cursos/Cadastro/Adicionar/Coordenador"
+      component={AddCoordinatorCourse}
       isPrivate
       exact
     />

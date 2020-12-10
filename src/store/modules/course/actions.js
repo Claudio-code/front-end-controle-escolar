@@ -47,3 +47,10 @@ export function deleteCourse(CourseId) {
     payload: { CourseId },
   };
 }
+
+export function addCoordinatorCourse({ Course, Teacher }) {
+  return {
+    type: '@course/ADD_COORDINATOR_COURSE',
+    payload: { Course, Teacher },
+  };
+}

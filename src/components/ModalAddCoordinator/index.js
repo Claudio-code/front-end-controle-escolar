@@ -14,7 +14,7 @@ import {
 import { Add } from '@material-ui/icons';
 
 import { getAllTeacherAction } from '../../store/modules/teacher/actions';
-import { addCoordinatorDiscipline } from '../../store/modules/disipline/actions';
+import { addCoordinatorCourse, getAllCourse } from '../../store/modules/course/actions';
 import { Container, ButtonUpdate } from '../../styles/global';
 import {
   TableCellBody,
@@ -26,13 +26,13 @@ import {
 const ModalAddCoordinator = ({ modalState, setModalState }) => {
   const dispatch = useDispatch();
   const teacherList = useSelector((state) => state.teacher.teacherList);
-  const disipline = useSelector((state) => state.disipline.disipline);
+  const course = useSelector((state) => state.course.course);
 
   const handleClose = () => setModalState(!modalState);
 
   const handleAddCoordinator = (item) => {
-    dispatch(addCoordinatorDiscipline({ Discipline: disipline, Teacher: item }));
-    dispatch(getAllTeacherAction());
+    dispatch(addCoordinatorCourse({ Course: course, Teacher: item }));
+    dispatch(getAllCourse());
     handleClose();
   };
 
@@ -51,7 +51,7 @@ const ModalAddCoordinator = ({ modalState, setModalState }) => {
     >
       <Fade in={modalState}>
         <Container>
-          <Title>Lista de Professores para adicionar como cordenador da disiplina</Title>
+          <Title>Lista de Professores para adicionar como cordenador do curso</Title>
           <TableContainer component={Paper} style={{ backgroundColor: '#f5f5f5', width: 'max-content' }}>
             <Table>
               <TableHeader>

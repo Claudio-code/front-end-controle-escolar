@@ -6,39 +6,44 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import { ButtonUpdate } from '../../styles/global';
+import { ButtonUpdate, Container } from '../../styles/global';
 import {
-  TableHeader, TableCellHeader, TableCellBody, Title, ContainerTable,
+  TableHeader,
+  TableCellHeader,
+  TableCellBody,
+  Title,
 } from './styles';
-import { getAllDisciplines, setOneDiscipline } from '../../store/modules/disipline/actions';
+import { getAllCourse, setOneCourse } from '../../store/modules/course/actions';
 import ModalAddCoordinator from '../../components/ModalAddCoordinator';
 
-const AddCoordinatorDiscipline = () => {
+// import { Container } from './styles';
+
+const AddCoordinatorCourse = () => {
   const dispatch = useDispatch();
   const [modalState, setModalState] = useState(false);
-  const [disciplinesData, setDisciplinesData] = useState([]);
-  const disciplineList = useSelector((state) => state.disipline.disiplineList);
-
-  const handleUpdate = (item) => {
-    dispatch(setOneDiscipline(item));
-    setModalState(!modalState);
-  };
+  const [coursesData, setCoursesData] = useState([]);
+  const coursesList = useSelector((state) => state.course.courseList);
 
   useEffect(() => {
-    dispatch(getAllDisciplines());
+    dispatch(getAllCourse());
   }, []);
 
   useEffect(() => {
-    setDisciplinesData(disciplineList);
-  }, [disciplineList]);
-
-  useEffect(() => {
-    dispatch(getAllDisciplines());
+    dispatch(getAllCourse());
   }, [modalState]);
 
+  useEffect(() => {
+    setCoursesData(coursesList);
+  }, [coursesList]);
+
+  const handleUpdate = (item) => {
+    dispatch(setOneCourse(item));
+    setModalState(!modalState);
+  };
+
   return (
-    <ContainerTable>
-      <Title>Lista de Disiplina para adicionar um Coordenador</Title>
+    <Container>
+      <Title>Lista de cursos</Title>
       <TableContainer component={Paper} style={{ backgroundColor: '#f5f5f5', width: 'max-content' }}>
         <Table>
           <TableHeader>
@@ -46,12 +51,12 @@ const AddCoordinatorDiscipline = () => {
               <TableCellHeader>Nome</TableCellHeader>
               <TableCellHeader>Descrição</TableCellHeader>
               <TableCellHeader>carga horaria</TableCellHeader>
-              <TableCellHeader>Nome do Coordenador</TableCellHeader>
+              <TableCellHeader>Nome do Professor</TableCellHeader>
               <TableCellHeader>Opções</TableCellHeader>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {disciplinesData && disciplinesData.length && disciplinesData.map((item) => (
+            {coursesData && coursesData.length && coursesData.map((item) => (
               <TableRow key={item.name}>
                 <TableCellBody>{ item.name }</TableCellBody>
                 <TableCellBody>{ item.description }</TableCellBody>
@@ -59,7 +64,7 @@ const AddCoordinatorDiscipline = () => {
                 <TableCellBody>{ item.coordinator ? `${item.coordinator.academicTitle} ${item.coordinator.name}` : 'Não há coordenador' }</TableCellBody>
                 <TableCellBody>
                   <ButtonUpdate onClick={() => handleUpdate(item)}>
-                    Adicionar Coordenador
+                    Adicionar Professor
                   </ButtonUpdate>
                 </TableCellBody>
               </TableRow>
@@ -71,8 +76,8 @@ const AddCoordinatorDiscipline = () => {
         modalState={modalState}
         setModalState={setModalState}
       />
-    </ContainerTable>
+    </Container>
   );
 };
 
-export default AddCoordinatorDiscipline;
+export default AddCoordinatorCourse;

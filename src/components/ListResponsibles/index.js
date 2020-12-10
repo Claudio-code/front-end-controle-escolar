@@ -6,26 +6,23 @@ import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {
-  Update, Delete, DoneAll, HighlightOff,
-} from '@material-ui/icons';
-
+import { Update, Delete } from '@material-ui/icons';
 import ModalUpdateResponsible from '../ModalUpdateResponsible';
-
 import { ButtonUpdate, ButtonError } from '../../styles/global';
 import {
-  TableHeader, TableCellHeader, TableCellBody, Title, Container,
+  TableHeader,
+  TableCellHeader,
+  TableCellBody,
+  Title,
+  Container,
 } from './styles';
 
-import Responsible from '../../domain/Responsible';
-
 import {
-  updateResponsible,
   deleteResponsible,
   getOneStudentWithAllResponsibleAndAddressAction,
 } from '../../store/modules/student/actions';
 
-function ListResponsibles() {
+const ListResponsibles = () => {
   const dispatch = useDispatch();
   const [modalState, setModalState] = useState(false);
   const [responsiblesData, setResponsiblesData] = useState([]);
@@ -60,7 +57,6 @@ function ListResponsibles() {
               <TableCellHeader>parentesco</TableCellHeader>
               <TableCellHeader>cpf</TableCellHeader>
               <TableCellHeader>rg</TableCellHeader>
-              <TableCellHeader>status</TableCellHeader>
               <TableCellHeader>Opções</TableCellHeader>
             </TableRow>
           </TableHeader>
@@ -72,7 +68,6 @@ function ListResponsibles() {
                 <TableCellBody>{row.kinship}</TableCellBody>
                 <TableCellBody>{row.cpf}</TableCellBody>
                 <TableCellBody>{row.rg}</TableCellBody>
-                <TableCellBody>{row.status ? (<DoneAll />) : (<HighlightOff />)}</TableCellBody>
                 <TableCellBody>
                   <ButtonUpdate onClick={() => openModalUpdateResponsibles(row)}>
                     <Update />
@@ -93,6 +88,6 @@ function ListResponsibles() {
       />
     </Container>
   );
-}
+};
 
 export default ListResponsibles;

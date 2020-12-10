@@ -26,6 +26,21 @@ const Courses = () => {
           onClick={() => history.push('/Cursos/Cadastro/Adicionar/Disiplinas')}
         />
       </ContainerCard>
+      <ContextTitle title="Editar" />
+      <ContainerCard>
+        <CardMenu
+          title="Atualizar curso"
+          content="Atualizar os dados do curso."
+          onClick={() => history.push('/Cursos/Update')}
+        />
+      </ContainerCard>
+      <ContextTitle title="Processos" />
+      <ContainerCard>
+        <CardMenu
+          title="Adicionar coordenador no curso"
+          onClick={() => history.push('/Cursos/Cadastro/Adicionar/Coordenador')}
+        />
+      </ContainerCard>
     </Container>
   );
 };

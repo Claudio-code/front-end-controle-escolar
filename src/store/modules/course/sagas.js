@@ -62,10 +62,21 @@ export function* deleteCourse({ payload: { CourseId } }) {
   }
 }
 
+export function* addCoordinator({ payload: { Course, Teacher } }) {
+  try {
+    yield call(api.put, `api/course/addCoordinator/${Course.id}`, { TeacherId: Teacher.id });
+
+    toast.success('Adicionado o coordenador do curso.');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
 export default all([
+  takeLatest('@course/ADD_COORDINATOR_COURSE', addCoordinator),
   takeLatest('@course/COURSE_REGISTRATION_ADD_DICIPLINES', courseRegisterAddDisciplines),
   takeLatest('@course/COURSE_DELETE', deleteCourse),
   takeLatest('@course/COURSE_UPDATE', updateCourse),
-  takeLatest('@course/COURSE_SET_ALL', getAllCourse),
+  takeLatest('@course/COURSE_GET_ALL', getAllCourse),
   takeLatest('@course/COURSE_REGISTRATION', courseRegister),
 ]);
