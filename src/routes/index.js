@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 import Route from './route';
 import SignIn from '../pages/SignIn';
 import Dashboard from '../pages/Dashboard';
-import Alunos from '../pages/Alunos';
+import Student from '../pages/Student';
 import StudentCompleteForm from '../pages/StudentCompleteForm';
 import StudentAndAddressRegistration from '../pages/StudentAndAddressRegistration';
 import StudentRegistration from '../pages/StudentRegistration';
@@ -24,12 +24,23 @@ import UpdateCourse from '../pages/UpdateCourse';
 import AddCoordinatorCourse from '../pages/AddCoordinatorCourse';
 import CourseRegistrationAndAddDisciplines from '../pages/CourseRegistrationAndAddDisciplines';
 import ClassesRegistration from '../pages/ClassesRegistration';
+import UpdateClasses from '../pages/UpdateClasses';
 
 const Routes = () => (
   <Switch>
     <Route path="/" exact component={SignIn} />
-    <Route path="/dashboard" component={Dashboard} isPrivate />
-    <Route path="/Alunos" exact component={Alunos} isPrivate />
+    <Route
+      path="/dashboard"
+      component={Dashboard}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Alunos"
+      exact
+      component={Student}
+      isPrivate
+    />
     <Route
       path="/Alunos/FormularioCompleto"
       component={StudentCompleteForm}
@@ -132,10 +143,21 @@ const Routes = () => (
       isPrivate
       exact
     />
-    <Route path="/Turmas" component={Classes} isPrivate exact />
+    <Route
+      path="/Turmas"
+      component={Classes}
+      isPrivate
+      exact
+    />
     <Route
       path="/Turmas/Cadastro"
       component={ClassesRegistration}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Turmas/Update"
+      component={UpdateClasses}
       isPrivate
       exact
     />
