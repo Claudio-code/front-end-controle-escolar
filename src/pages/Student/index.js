@@ -51,6 +51,10 @@ const Student = () => (
         content="Fazer a matricula do aluno."
         onClick={() => history.push('/Alunos/MakeMatriculation')}
       />
+      <CardMenu
+        title="Remover Matricula"
+        onClick={() => history.push('/Alunos/remover/matricula')}
+      />
     </ContainerCard>
     <ContextTitle title="Relatórios" />
     <ContainerCard>

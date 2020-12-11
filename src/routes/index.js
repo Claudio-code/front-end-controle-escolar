@@ -32,6 +32,7 @@ import ReportTeachersDisciplines from '../pages/ReportTeachersDisciplines/index'
 import ReportMatriculation from '../pages/ReportMatriculation/index';
 import ReportTeachersCoordenation from '../pages/ReportTeachersCoordenation/index';
 import ReportClasseCourse from '../pages/ReportClasseCourse/index';
+import RemoveMatriculation from '../pages/RemoveMatriculation/index';
 
 const Routes = () => (
   <Switch>
@@ -46,6 +47,12 @@ const Routes = () => (
       path="/Alunos"
       exact
       component={Student}
+      isPrivate
+    />
+    <Route
+      path="/Alunos/remover/matricula"
+      exact
+      component={RemoveMatriculation}
       isPrivate
     />
     <Route
