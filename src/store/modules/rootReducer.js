@@ -6,6 +6,7 @@ import teacher from './teacher/reducer';
 import topics from './topics/reducer';
 import disipline from './disipline/reducer';
 import course from './course/reducer';
+import classes from './classes/reducer';
 
 export default combineReducers({
   auth,
@@ -14,4 +15,5 @@ export default combineReducers({
   topics,
   disipline,
   course,
+  classes,
 });

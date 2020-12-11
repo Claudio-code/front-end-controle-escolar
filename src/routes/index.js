@@ -15,7 +15,7 @@ import TeacherRegistration from '../pages/TeacherRegistration';
 import UpdateTeacher from '../pages/UpdateTeacher';
 import Disciplines from '../pages/Disciplines';
 import Courses from '../pages/Courses';
-import Turmas from '../pages/Turmas';
+import Classes from '../pages/Classes';
 import DisciplineRegistration from '../pages/DisciplineRegistration';
 import UpdateDiscipline from '../pages/UpdateDiscipline';
 import AddTeacherDiscipline from '../pages/AddTeacherDiscipline';
@@ -23,6 +23,7 @@ import CourseRegistration from '../pages/CourseRegistration';
 import UpdateCourse from '../pages/UpdateCourse';
 import AddCoordinatorCourse from '../pages/AddCoordinatorCourse';
 import CourseRegistrationAndAddDisciplines from '../pages/CourseRegistrationAndAddDisciplines';
+import ClassesRegistration from '../pages/ClassesRegistration';
 
 const Routes = () => (
   <Switch>
@@ -131,7 +132,13 @@ const Routes = () => (
       isPrivate
       exact
     />
-    <Route path="/Turmas" component={Turmas} isPrivate />
+    <Route path="/Turmas" component={Classes} isPrivate exact />
+    <Route
+      path="/Turmas/Cadastro"
+      component={ClassesRegistration}
+      isPrivate
+      exact
+    />
   </Switch>
 );
 

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export function courseRegistrationAction(Course) {
   return {
     type: '@course/COURSE_REGISTRATION',
