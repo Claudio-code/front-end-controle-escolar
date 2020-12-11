@@ -55,7 +55,7 @@ const UpdateDiscipline = () => {
 
   return (
     <ContainerTable>
-      <Title>Lista dos Topicos das Disiplinas</Title>
+      <Title>Lista das Disiplinas</Title>
       <TableContainer component={Paper} style={{ backgroundColor: '#f5f5f5', width: 'max-content' }}>
         <Table>
           <TableHeader>
