@@ -32,7 +32,7 @@ const Classes = () => (
     <ContainerCard>
       <CardMenu
         title="Adicionar o curso a turma"
-        onClick={() => history.push('/Turmas/Update')}
+        onClick={() => history.push('/Turmas/Adicionar/Curso')}
       />
     </ContainerCard>
   </Container>

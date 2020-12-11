@@ -40,3 +40,10 @@ export function deleteClasse(ClasseId) {
     payload: { ClasseId },
   };
 }
+
+export function addCourseInClasse(Classe) {
+  return {
+    type: '@classes/CLASSE_ADD_COURSE',
+    payload: { Classe },
+  };
+}

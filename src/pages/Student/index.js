@@ -50,6 +50,7 @@ const Student = () => (
       <CardMenu
         title="Matricular"
         content="Fazer a matricula do aluno."
+        onClick={() => history.push('/Alunos/MakeMatriculation')}
       />
       {/* <CardMenu
         title="Cadastro o Aluno em uma turma"

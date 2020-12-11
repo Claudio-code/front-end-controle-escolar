@@ -6,6 +6,7 @@ import {
 import { setAllClasse } from './actions';
 import api from '../../../services/api';
 import history from '../../../services/history';
+import { ta } from 'date-fns/locale';
 
 export function* classeRegister({ payload }) {
   try {
@@ -51,7 +52,18 @@ export function* deleteClasse({ payload: { ClasseId } }) {
   }
 }
 
+export function* addCourseInClasse({ payload: { Classe } }) {
+  try {
+    yield call(api.put, `api/classes/addCourse/${Classe.id}`, { CourseId: Classe.CourseId });
+
+    toast.success('adicionado curso a essa turma com sucesso.');
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+
 export default all([
+  takeLatest('@classes/CLASSE_ADD_COURSE', addCourseInClasse),
   takeLatest('@classes/CLASSE_DELETE', deleteClasse),
   takeLatest('@classes/CLASSE_UPDATE', updateClasse),
   takeLatest('@classes/CLASSE_GET_ALL', getAllClasse),

@@ -25,6 +25,8 @@ import AddCoordinatorCourse from '../pages/AddCoordinatorCourse';
 import CourseRegistrationAndAddDisciplines from '../pages/CourseRegistrationAndAddDisciplines';
 import ClassesRegistration from '../pages/ClassesRegistration';
 import UpdateClasses from '../pages/UpdateClasses';
+import AddCourseInClasse from '../pages/AddCourseInClasse';
+import MakeMatriculation from '../pages/MakeMatriculation';
 
 const Routes = () => (
   <Switch>
@@ -39,6 +41,12 @@ const Routes = () => (
       path="/Alunos"
       exact
       component={Student}
+      isPrivate
+    />
+    <Route
+      path="/Alunos/MakeMatriculation"
+      exact
+      component={MakeMatriculation}
       isPrivate
     />
     <Route
@@ -158,6 +166,12 @@ const Routes = () => (
     <Route
       path="/Turmas/Update"
       component={UpdateClasses}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Turmas/Adicionar/Curso"
+      component={AddCourseInClasse}
       isPrivate
       exact
     />

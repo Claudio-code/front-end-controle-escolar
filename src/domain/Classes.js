@@ -16,7 +16,7 @@ class Classes extends GenericEntity {
   }
 
   addCourse(course) {
-    this.course = course;
+    this.CourseId = course.id;
   }
 }
 
