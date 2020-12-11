@@ -63,7 +63,6 @@ const UpdateDiscipline = () => {
               <TableCellHeader>Nome</TableCellHeader>
               <TableCellHeader>Descrição</TableCellHeader>
               <TableCellHeader>carga horaria</TableCellHeader>
-              <TableCellHeader>Status</TableCellHeader>
               <TableCellHeader>Opções</TableCellHeader>
             </TableRow>
           </TableHeader>
@@ -73,7 +72,6 @@ const UpdateDiscipline = () => {
                 <TableCellBody>{ item.name }</TableCellBody>
                 <TableCellBody>{ item.description }</TableCellBody>
                 <TableCellBody>{ `${item.amountHours} horas` }</TableCellBody>
-                <TableCellBody>{item.status ? (<DoneAll />) : (<HighlightOff />)}</TableCellBody>
                 <TableCellBody>
                   <ButtonUpdate onClick={() => handleUpdate(item)}>
                     <Update />
