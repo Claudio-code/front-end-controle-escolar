@@ -43,8 +43,12 @@ const Courses = () => (
     <ContextTitle title="Relatorio" />
     <ContainerCard>
       <CardMenu
-        title="relatorio cusos com coordenador"
+        title="relatorio cursos com coordenador"
         onClick={() => history.push('/Cursos/Relatorio/Coordenador')}
+      />
+      <CardMenu
+        title="relatorio cursos com disiplinas"
+        onClick={() => history.push('/Cursos/Relatorio/Disiplinas')}
       />
     </ContainerCard>
   </Container>

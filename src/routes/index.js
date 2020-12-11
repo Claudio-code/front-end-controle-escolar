@@ -33,6 +33,7 @@ import ReportMatriculation from '../pages/ReportMatriculation/index';
 import ReportTeachersCoordenation from '../pages/ReportTeachersCoordenation/index';
 import ReportClasseCourse from '../pages/ReportClasseCourse/index';
 import RemoveMatriculation from '../pages/RemoveMatriculation/index';
+import ReportCourseDisciplines from '../pages/ReportCourseDisciplines/index';
 
 const Routes = () => (
   <Switch>
@@ -154,6 +155,12 @@ const Routes = () => (
     <Route
       path="/Cursos"
       component={Courses}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Cursos/Relatorio/Disiplinas"
+      component={ReportCourseDisciplines}
       isPrivate
       exact
     />
