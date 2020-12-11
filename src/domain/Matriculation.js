@@ -1,12 +1,13 @@
 import GenericEntity from './GenericEntity';
-import Student from './Student';
-import Classes from './Classes';
 
 class Matriculation extends GenericEntity {
-  constructor(student, classes) {
+  constructor(student, classes, id = false) {
     super();
-    this.student = student;
-    this.classes = classes;
+    if (id) {
+      this.id = id;
+    }
+    this.StudentId = student.id;
+    this.ClasseId = classes.id;
     this.academicRecord = Math.floor(Math.random() * 100);
   }
 }

@@ -40,6 +40,13 @@ const Courses = () => (
         onClick={() => history.push('/Cursos/Cadastro/Adicionar/Coordenador')}
       />
     </ContainerCard>
+    <ContextTitle title="Relatorio" />
+    <ContainerCard>
+      <CardMenu
+        title="relatorio cusos com coordenador"
+        onClick={() => history.push('/Cursos/Relatorio/Coordenador')}
+      />
+    </ContainerCard>
   </Container>
 );
 

@@ -44,7 +44,6 @@ const Student = () => (
         onClick={() => history.push('/Alunos/Update')}
       />
     </ContainerCard>
-
     <ContextTitle title="Processos" />
     <ContainerCard>
       <CardMenu
@@ -52,18 +51,18 @@ const Student = () => (
         content="Fazer a matricula do aluno."
         onClick={() => history.push('/Alunos/MakeMatriculation')}
       />
-      {/* <CardMenu
-        title="Cadastro o Aluno em uma turma"
-        content="Cadastrar o aluno em uma turma."
+    </ContainerCard>
+    <ContextTitle title="Relatórios" />
+    <ContainerCard>
+
+      <CardMenu
+        title="Alunos com Responsavel e endereço cadastrado"
+        onClick={() => history.push('/Alunos/relatorio/completo')}
       />
       <CardMenu
-        title="Trocar o aluno de turma"
-        content="Mover o aluno para uma turma que tenha vagas."
+        title="Relatorio de alunos matriculados"
+        onClick={() => history.push('/Alunos/relatorio/matriculados')}
       />
-      <CardMenu
-        title="Cancelar a matricula"
-        content="Desativar a matricula do aluno."
-      /> */}
     </ContainerCard>
   </Container>
 );

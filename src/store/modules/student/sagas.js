@@ -75,6 +75,8 @@ export function* getAllStudents() {
       );
       student.setId(item.id);
       list.push(student);
+      student.setAddress(item.Addresses[0]);
+      student.setResponsible(item.Responsibles[0]);
     }
 
     yield put(setAllStudentsAction(list));

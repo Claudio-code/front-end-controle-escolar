@@ -27,6 +27,11 @@ import ClassesRegistration from '../pages/ClassesRegistration';
 import UpdateClasses from '../pages/UpdateClasses';
 import AddCourseInClasse from '../pages/AddCourseInClasse';
 import MakeMatriculation from '../pages/MakeMatriculation';
+import ReportStudentResponsibleAndAddress from '../pages/ReportStudentResponsibleAndAddress';
+import ReportTeachersDisciplines from '../pages/ReportTeachersDisciplines/index';
+import ReportMatriculation from '../pages/ReportMatriculation/index';
+import ReportTeachersCoordenation from '../pages/ReportTeachersCoordenation/index';
+import ReportClasseCourse from '../pages/ReportClasseCourse/index';
 
 const Routes = () => (
   <Switch>
@@ -41,6 +46,12 @@ const Routes = () => (
       path="/Alunos"
       exact
       component={Student}
+      isPrivate
+    />
+    <Route
+      path="/Alunos/relatorio/completo"
+      exact
+      component={ReportStudentResponsibleAndAddress}
       isPrivate
     />
     <Route
@@ -80,8 +91,20 @@ const Routes = () => (
       isPrivate
     />
     <Route
+      path="/Alunos/relatorio/matriculados"
+      component={ReportMatriculation}
+      exact
+      isPrivate
+    />
+    <Route
       path="/Professores"
       component={Teachers}
+      exact
+      isPrivate
+    />
+    <Route
+      path="/Professores/relatorio/disiplinas"
+      component={ReportTeachersDisciplines}
       exact
       isPrivate
     />
@@ -124,6 +147,12 @@ const Routes = () => (
     <Route
       path="/Cursos"
       component={Courses}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Cursos/Relatorio/Coordenador"
+      component={ReportTeachersCoordenation}
       isPrivate
       exact
     />
@@ -172,6 +201,12 @@ const Routes = () => (
     <Route
       path="/Turmas/Adicionar/Curso"
       component={AddCourseInClasse}
+      isPrivate
+      exact
+    />
+    <Route
+      path="/Turmas/Relatorio/Curso"
+      component={ReportClasseCourse}
       isPrivate
       exact
     />

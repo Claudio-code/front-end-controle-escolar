@@ -28,6 +28,13 @@ const Teachers = () => (
         onClick={() => history.push('/Professores/Update')}
       />
     </ContainerCard>
+    <ContextTitle title="Relatorios" />
+    <ContainerCard>
+      <CardMenu
+        title="Professores com disiplinas"
+        onClick={() => history.push('/Professores/relatorio/disiplinas')}
+      />
+    </ContainerCard>
   </Container>
 );
 

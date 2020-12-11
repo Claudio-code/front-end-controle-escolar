@@ -54,7 +54,6 @@ const UpdateTeacher = () => {
             <TableCellHeader>rg</TableCellHeader>
             <TableCellHeader>idade</TableCellHeader>
             <TableCellHeader>titulo academico</TableCellHeader>
-            <TableCellHeader>Status</TableCellHeader>
             <TableCellHeader>Opções</TableCellHeader>
           </TableRow>
         </TableHeader>
@@ -67,7 +66,6 @@ const UpdateTeacher = () => {
               <TableCellBody>{item.rg}</TableCellBody>
               <TableCellBody>{item.age}</TableCellBody>
               <TableCellBody>{item.academicTitle}</TableCellBody>
-              <TableCellBody>{item.status ? (<DoneAll />) : (<HighlightOff />)}</TableCellBody>
               <TableCellBody>
                 <ButtonUpdate onClick={() => handleUpdateTeacher(item)}>
                   <Update />

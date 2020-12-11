@@ -35,6 +35,13 @@ const Classes = () => (
         onClick={() => history.push('/Turmas/Adicionar/Curso')}
       />
     </ContainerCard>
+    <ContextTitle title="Relatorios" />
+    <ContainerCard>
+      <CardMenu
+        title="Turmas com cursos"
+        onClick={() => history.push('/Turmas/Relatorio/Curso')}
+      />
+    </ContainerCard>
   </Container>
 );
 

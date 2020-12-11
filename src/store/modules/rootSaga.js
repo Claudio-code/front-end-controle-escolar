@@ -7,6 +7,7 @@ import topics from './topics/sagas';
 import disipline from './disipline/sagas';
 import course from './course/sagas';
 import classes from './classes/sagas';
+import matriculation from './matriculation/sagas';
 
 export default function* rootSaga() {
   return yield all([
@@ -17,5 +18,6 @@ export default function* rootSaga() {
     disipline,
     course,
     classes,
+    matriculation,
   ]);
 }

@@ -54,10 +54,10 @@ function ListAddress() {
         <Table aria-label="customized table">
           <TableHeader>
             <TableRow>
-              <TableCellHeader>city</TableCellHeader>
-              <TableCellHeader>country</TableCellHeader>
-              <TableCellHeader>public_place</TableCellHeader>
-              <TableCellHeader>number</TableCellHeader>
+              <TableCellHeader>Cidade</TableCellHeader>
+              <TableCellHeader>estado</TableCellHeader>
+              <TableCellHeader>rua</TableCellHeader>
+              <TableCellHeader>rumero</TableCellHeader>
               <TableCellHeader>cep</TableCellHeader>
               <TableCellHeader>Opções</TableCellHeader>
             </TableRow>
@@ -67,7 +67,7 @@ function ListAddress() {
               <TableRow key={row.cep}>
                 <TableCellBody>{row.city}</TableCellBody>
                 <TableCellBody>{row.country}</TableCellBody>
-                <TableCellBody>{row.public_place}</TableCellBody>
+                <TableCellBody>{row.publicPlace}</TableCellBody>
                 <TableCellBody>{row.number}</TableCellBody>
                 <TableCellBody>{row.cep}</TableCellBody>
                 <TableCellBody>

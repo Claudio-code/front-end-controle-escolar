@@ -5,37 +5,33 @@ import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Update, Delete } from '@material-ui/icons';
 
-import { ButtonUpdate, Container } from '../../styles/global';
-import {
-  TableHeader,
-  TableCellHeader,
-  TableCellBody,
-  Title,
-} from './styles';
+import history from '../../services/history';
+import ModalUpdateStudent from '../../components/ModalUpdateStudent';
 import {
   getAllStudentsAction,
-  setOneStudentAction,
 } from '../../store/modules/student/actions';
-import ModalAddClasse from '../../components/ModalAddClasse';
 
-const MakeMatriculation = () => {
+import { Container, ButtonUpdate, ButtonError } from '../../styles/global';
+import {
+  TableHeader, TableCellHeader, TableCellBody, Title,
+} from './styles';
+
+
+const ReportStudentResponsibleAndAddress = () => {
   const dispatch = useDispatch();
   const listStudent = useSelector((state) => state.student.studentsList);
-  const [modalState, setModalState] = useState(false);
 
   useEffect(() => {
     dispatch(getAllStudentsAction());
   }, []);
 
-  const handleUpdate = (item) => {
-    dispatch(setOneStudentAction(item));
-    setModalState(!modalState);
-  };
+  console.log(listStudent);
 
   return (
     <Container>
-      <Title>Lista de estudantes</Title>
+      <Title>Relatorio de estudantes</Title>
       <TableContainer component={Paper} style={{ backgroundColor: '#f5f5f5' }}>
         <Table aria-label="customized table">
           <TableHeader>
@@ -47,7 +43,9 @@ const MakeMatriculation = () => {
               <TableCellHeader>idade</TableCellHeader>
               <TableCellHeader>Sexo</TableCellHeader>
               <TableCellHeader>Etnia</TableCellHeader>
-              <TableCellHeader>Opções</TableCellHeader>
+              <TableCellHeader>nome do responsavel</TableCellHeader>
+              <TableCellHeader>endereço</TableCellHeader>
+              <TableCellHeader>cep</TableCellHeader>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -61,21 +59,19 @@ const MakeMatriculation = () => {
                 <TableCellBody>{row.sex}</TableCellBody>
                 <TableCellBody>{row.ethnicity}</TableCellBody>
                 <TableCellBody>
-                  <ButtonUpdate onClick={() => handleUpdate(row)}>
-                    Adicionar turma
-                  </ButtonUpdate>
+                  {`${row.Responsible.parentesco} ${row.Responsible.name}`}
                 </TableCellBody>
+                <TableCellBody>
+                  {`${row.Address.publicPlace}  ${row.Address.number}`}
+                </TableCellBody>
+                <TableCellBody>{row.Address.cep}</TableCellBody>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <ModalAddClasse
-        modalState={modalState}
-        setModalState={setModalState}
-      />
     </Container>
   );
 };
 
-export default MakeMatriculation;
+export default ReportStudentResponsibleAndAddress;

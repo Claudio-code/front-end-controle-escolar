@@ -20,9 +20,9 @@ import {
   TableHeader,
   Title,
 } from './styles';
-import { getAllTeacherAction } from '../../store/modules/teacher/actions';
 import { getAllClasse } from '../../store/modules/classes/actions';
-// import {  } from '..';
+import { matriculationRegistrationAction } from '../../store/modules/matriculation/actions';
+import Matriculation from '../../domain/Matriculation';
 
 const ModalAddClasse = ({ modalState, setModalState }) => {
   const dispatch = useDispatch();
@@ -34,6 +34,11 @@ const ModalAddClasse = ({ modalState, setModalState }) => {
   useEffect(() => {
     dispatch(getAllClasse());
   }, []);
+
+  const handleAddClasse = (item) => {
+    const matriculation = new Matriculation(student, item);
+    dispatch(matriculationRegistrationAction(matriculation));
+  };
 
   return (
     <Dialog
@@ -61,13 +66,15 @@ const ModalAddClasse = ({ modalState, setModalState }) => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {classesList && classesList.length && classesList.map((item) => (
+                {classesList && classesList.length && classesList.map((item) => item.course && (
                   <TableRow key={item.name}>
                     <TableCellBody>{ item.name }</TableCellBody>
                     <TableCellBody>{ item.numberStudents }</TableCellBody>
                     <TableCellBody>{ item.maximumStudents }</TableCellBody>
                     <TableCellBody>
-                      dw
+                      <ButtonUpdate onClick={() => handleAddClasse(item)}>
+                        <Add />
+                      </ButtonUpdate>
                     </TableCellBody>
                   </TableRow>
                 ))}
