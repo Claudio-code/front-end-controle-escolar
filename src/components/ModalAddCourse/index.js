@@ -77,7 +77,7 @@ const ModalAddCourse = ({ modalState, setModalState }) => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {coursesData && coursesData.length && coursesData.map((item) => item.diciplines.length > 0 && (
+                {coursesData && coursesData.length && coursesData.map((item) => (
                   <TableRow key={item.name}>
                     <TableCellBody>{ item.name }</TableCellBody>
                     <TableCellBody>{ item.description }</TableCellBody>
